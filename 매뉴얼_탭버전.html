@@ -408,6 +408,7 @@
         <button class="tab-btn" onclick="showTab(event, 'hall')">홀 서빙</button>
         <button class="tab-btn" onclick="showTab(event, 'manager')">매니저</button>
         <button class="tab-btn" onclick="showTab(event, 'close')">마감</button>
+        <button class="tab-btn" onclick="showTab(event, 'mealkit')">밀키트</button>
     </div>
 
     <!-- 오픈 준비 -->
@@ -1329,6 +1330,147 @@
             <div class="checklist-item"><input type="checkbox" id="c15"><label for="c15">불 끄기</label></div>
             <div class="checklist-item"><input type="checkbox" id="c16"><label for="c16">문 잠금</label></div>
             <div class="checklist-item"><input type="checkbox" id="c17"><label for="c17">내일 발주 확인</label></div>
+        </div>
+    </div>
+
+    <!-- 밀키트 -->
+    <div id="mealkit" class="tab-content">
+        <div class="position-header">
+            <div class="name">전골곱창 밀키트</div>
+            <div class="meta">제품 구성 · 원가 · 판매 정보 · 깍두기 레시피</div>
+        </div>
+
+        <div class="sub-section">
+            <div class="sub-title">제품 개요</div>
+            <div class="task-card">
+                <table style="width:100%; border-collapse:collapse; font-size:0.94em;">
+                    <tr><td style="padding:8px 0; color:#787774; width:40%;">소비자 판매가</td><td style="padding:8px 0; font-weight:600;">31,000원</td></tr>
+                    <tr style="border-top:1px solid #f1f1ef;"><td style="padding:8px 0; color:#787774;">권장 판매가</td><td style="padding:8px 0; font-weight:600;">29,000원</td></tr>
+                    <tr style="border-top:1px solid #f1f1ef;"><td style="padding:8px 0; color:#787774;">제조 원가</td><td style="padding:8px 0; font-weight:600;">13,230원</td></tr>
+                    <tr style="border-top:1px solid #f1f1ef;"><td style="padding:8px 0; color:#787774;">월 판매 수량</td><td style="padding:8px 0;">구이 1 · 전골 3</td></tr>
+                    <tr style="border-top:1px solid #f1f1ef;"><td style="padding:8px 0; color:#787774;">월 매출</td><td style="padding:8px 0;">139,000원</td></tr>
+                    <tr style="border-top:1px solid #f1f1ef;"><td style="padding:8px 0; color:#787774;">택배비</td><td style="padding:8px 0;">3,500원 · 고객 부담 (차액 발생 시 업체 부담)</td></tr>
+                    <tr style="border-top:1px solid #f1f1ef;"><td style="padding:8px 0; color:#787774;">채널 수수료</td><td style="padding:8px 0;">3% · 네이버 스마트스토어 기본 수수료</td></tr>
+                    <tr style="border-top:1px solid #f1f1ef;"><td style="padding:8px 0; color:#787774;">리뷰</td><td style="padding:8px 0;">30개 · 별점 4.97 · 찜 20개</td></tr>
+                    <tr style="border-top:1px solid #f1f1ef;"><td style="padding:8px 0; color:#787774;">하루 최대 생산량</td><td style="padding:8px 0;">200개 (확대 가능)</td></tr>
+                    <tr style="border-top:1px solid #f1f1ef;"><td style="padding:8px 0; color:#787774;">광고 · 고객 CRM</td><td style="padding:8px 0;">없음</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="sub-section">
+            <div class="sub-title">밀키트 구성품 (1세트 기준)</div>
+            <div class="task-card">
+                <table style="width:100%; border-collapse:collapse; font-size:0.92em;">
+                    <thead>
+                        <tr style="border-bottom:2px solid #e9e9e7;">
+                            <th style="padding:8px 6px; text-align:left; color:#787774; font-weight:600; width:38px;">#</th>
+                            <th style="padding:8px 6px; text-align:left; color:#787774; font-weight:600;">품목</th>
+                            <th style="padding:8px 6px; text-align:right; color:#787774; font-weight:600; width:80px;">중량</th>
+                            <th style="padding:8px 6px; text-align:right; color:#787774; font-weight:600; width:80px;">단가</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom:1px solid #f1f1ef;"><td style="padding:7px 6px;">1</td><td style="padding:7px 6px; font-weight:600;">전골곱창</td><td style="padding:7px 6px; text-align:right;">150g</td><td style="padding:7px 6px; text-align:right;">4,500</td></tr>
+                        <tr style="border-bottom:1px solid #f1f1ef;"><td style="padding:7px 6px;">2</td><td style="padding:7px 6px;">깐양</td><td style="padding:7px 6px; text-align:right;">70g</td><td style="padding:7px 6px; text-align:right;">560</td></tr>
+                        <tr style="border-bottom:1px solid #f1f1ef;"><td style="padding:7px 6px;">3</td><td style="padding:7px 6px;">알배기</td><td style="padding:7px 6px; text-align:right;">120g</td><td style="padding:7px 6px; text-align:right;">200</td></tr>
+                        <tr style="border-bottom:1px solid #f1f1ef;"><td style="padding:7px 6px;">4</td><td style="padding:7px 6px;">양파</td><td style="padding:7px 6px; text-align:right;">80g</td><td style="padding:7px 6px; text-align:right;">150</td></tr>
+                        <tr style="border-bottom:1px solid #f1f1ef;"><td style="padding:7px 6px;">5</td><td style="padding:7px 6px;">대파</td><td style="padding:7px 6px; text-align:right;">80g</td><td style="padding:7px 6px; text-align:right;">150</td></tr>
+                        <tr style="border-bottom:1px solid #f1f1ef;"><td style="padding:7px 6px;">6</td><td style="padding:7px 6px;">깻잎</td><td style="padding:7px 6px; text-align:right;">20g</td><td style="padding:7px 6px; text-align:right;">200</td></tr>
+                        <tr style="border-bottom:1px solid #f1f1ef;"><td style="padding:7px 6px;">7</td><td style="padding:7px 6px;">청양고추</td><td style="padding:7px 6px; text-align:right;">20g</td><td style="padding:7px 6px; text-align:right;">100</td></tr>
+                        <tr style="border-bottom:1px solid #f1f1ef;"><td style="padding:7px 6px;">8</td><td style="padding:7px 6px;">우동</td><td style="padding:7px 6px; text-align:right;">1개</td><td style="padding:7px 6px; text-align:right;">0</td></tr>
+                        <tr style="border-bottom:1px solid #f1f1ef;"><td style="padding:7px 6px;">9</td><td style="padding:7px 6px;">팽이버섯</td><td style="padding:7px 6px; text-align:right;">50g</td><td style="padding:7px 6px; text-align:right;">250</td></tr>
+                        <tr style="border-bottom:1px solid #f1f1ef;"><td style="padding:7px 6px;">10</td><td style="padding:7px 6px;">당면</td><td style="padding:7px 6px; text-align:right;">100g</td><td style="padding:7px 6px; text-align:right;">300</td></tr>
+                        <tr style="border-bottom:1px solid #f1f1ef;"><td style="padding:7px 6px;">11</td><td style="padding:7px 6px; font-weight:600;">전골소스 양념</td><td style="padding:7px 6px; text-align:right;">170g</td><td style="padding:7px 6px; text-align:right;">1,300</td></tr>
+                        <tr style="border-bottom:1px solid #f1f1ef;"><td style="padding:7px 6px;">12</td><td style="padding:7px 6px;">전골 보냉백</td><td style="padding:7px 6px; text-align:right;">1ea</td><td style="padding:7px 6px; text-align:right;">1,400</td></tr>
+                        <tr style="border-bottom:1px solid #f1f1ef;"><td style="padding:7px 6px;">13</td><td style="padding:7px 6px;">스티로폼 박스</td><td style="padding:7px 6px; text-align:right;">1box</td><td style="padding:7px 6px; text-align:right;">1,500</td></tr>
+                        <tr style="border-bottom:1px solid #f1f1ef;"><td style="padding:7px 6px;">14</td><td style="padding:7px 6px;">아이스팩</td><td style="padding:7px 6px; text-align:right;">350g</td><td style="padding:7px 6px; text-align:right;">500</td></tr>
+                        <tr style="border-bottom:1px solid #f1f1ef;"><td style="padding:7px 6px;">15</td><td style="padding:7px 6px;">소스 용기</td><td style="padding:7px 6px; text-align:right;">1ea</td><td style="padding:7px 6px; text-align:right;">130</td></tr>
+                        <tr style="border-bottom:1px solid #f1f1ef;"><td style="padding:7px 6px;">16</td><td style="padding:7px 6px;">진공포장 비닐</td><td style="padding:7px 6px; text-align:right;">2ea</td><td style="padding:7px 6px; text-align:right;">80</td></tr>
+                        <tr style="border-bottom:1px solid #f1f1ef;"><td style="padding:7px 6px;">17</td><td style="padding:7px 6px;">스티커</td><td style="padding:7px 6px; text-align:right;">—</td><td style="padding:7px 6px; text-align:right;">100</td></tr>
+                        <tr style="border-bottom:1px solid #f1f1ef;"><td style="padding:7px 6px;">18</td><td style="padding:7px 6px;">박스 테이프</td><td style="padding:7px 6px; text-align:right;">—</td><td style="padding:7px 6px; text-align:right;">20</td></tr>
+                        <tr style="border-bottom:1px solid #f1f1ef;"><td style="padding:7px 6px;">19</td><td style="padding:7px 6px; color:#787774;">인건비</td><td style="padding:7px 6px; text-align:right;">—</td><td style="padding:7px 6px; text-align:right;">2,500</td></tr>
+                    </tbody>
+                </table>
+
+                <div class="info-box" style="margin-top:14px;">
+                    <strong>합계</strong> &nbsp; 13,940원<br>
+                    <strong>마진 30%</strong> &nbsp; +4,182원<br>
+                    <strong>마진 포함 합계</strong> &nbsp; 18,122원
+                </div>
+            </div>
+        </div>
+
+        <div class="sub-section">
+            <div class="sub-title">깍두기 레시피 (2,000g 기준)</div>
+            <div class="task-card">
+                <div class="task-card-title">재료 구성 비율</div>
+                <ul class="list">
+                    <li><strong>무</strong> &nbsp; 8 (기준량)</li>
+                    <li><strong>고춧가루</strong> &nbsp; 2.5</li>
+                    <li><strong>양파</strong> &nbsp; 3</li>
+                    <li><strong>마늘</strong> &nbsp; 2</li>
+                    <li><strong>굵은 소금</strong> &nbsp; 2</li>
+                    <li><strong>까나리</strong> &nbsp; 0.5</li>
+                    <li><strong>설탕</strong> &nbsp; 0.5</li>
+                    <li><strong>미원</strong> &nbsp; 0.2</li>
+                    <li><strong>찹쌀풀</strong> &nbsp; 적량</li>
+                </ul>
+                <div class="tip-box">단위는 상대 비율. 실제 배합 시 기준량(무) 대비 맞춰 조정.</div>
+            </div>
+        </div>
+
+        <div class="sub-section">
+            <div class="sub-title">제품 라인업 및 확장 계획</div>
+
+            <div class="task-card">
+                <div class="task-card-title">현재 제품</div>
+                <ul class="list">
+                    <li>곱창전골 (밀키트 중심)</li>
+                    <li>곱창구이</li>
+                    <li>막창구이</li>
+                    <li>대창구이</li>
+                </ul>
+                <div class="tip-box">전골 밀키트 안정화 후 인력 · 설비 충원하여 구이류 진행 가능</div>
+            </div>
+
+            <div class="task-card">
+                <div class="task-card-title">판매 예정 상품</div>
+                <ul class="list">
+                    <li>볶음밥 키트</li>
+                    <li>대창 기름 떡볶이</li>
+                    <li>마라 큐브</li>
+                </ul>
+            </div>
+
+            <div class="task-card">
+                <div class="task-card-title">옵션 상품</div>
+                <ul class="list">
+                    <li>깍두기</li>
+                    <li>전골곱창 추가</li>
+                    <li>우동</li>
+                    <li>당면</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="sub-section">
+            <div class="sub-title">판매가 옵션 (Sheet1 참고)</div>
+            <div class="task-card">
+                <table style="width:100%; border-collapse:collapse; font-size:0.94em;">
+                    <thead>
+                        <tr style="border-bottom:2px solid #e9e9e7;">
+                            <th style="padding:8px 6px; text-align:left; color:#787774; font-weight:600;">옵션</th>
+                            <th style="padding:8px 6px; text-align:right; color:#787774; font-weight:600;">가격</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom:1px solid #f1f1ef;"><td style="padding:7px 6px;">기본</td><td style="padding:7px 6px; text-align:right; font-weight:600;">23,900원</td></tr>
+                        <tr style="border-bottom:1px solid #f1f1ef;"><td style="padding:7px 6px;">중간</td><td style="padding:7px 6px; text-align:right; font-weight:600;">25,900원</td></tr>
+                        <tr style="border-bottom:1px solid #f1f1ef;"><td style="padding:7px 6px;">프리미엄</td><td style="padding:7px 6px; text-align:right; font-weight:600;">29,900원</td></tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
