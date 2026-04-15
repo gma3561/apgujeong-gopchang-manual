@@ -36,15 +36,22 @@
         /* 탭 네비게이션 */
         .tab-nav {
             display: flex;
-            flex-wrap: wrap;
             border-bottom: 1px solid #e9e9e7;
             margin-bottom: 32px;
             gap: 2px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            position: sticky;
+            top: 0;
+            background: #ffffff;
+            z-index: 10;
         }
+        .tab-nav::-webkit-scrollbar { display: none; }
         .tab-btn {
             background: transparent;
             border: none;
-            padding: 10px 14px;
+            padding: 12px 14px;
             cursor: pointer;
             font-size: 0.92em;
             font-weight: 500;
@@ -53,6 +60,9 @@
             transition: all 0.1s;
             margin-bottom: -1px;
             font-family: inherit;
+            white-space: nowrap;
+            flex-shrink: 0;
+            min-height: 44px;
         }
         .tab-btn:hover {
             color: #37352f;
@@ -346,11 +356,39 @@
 
         /* 반응형 */
         @media (max-width: 768px) {
-            .container { padding: 40px 20px 60px; }
-            .header h1 { font-size: 1.8em; }
-            .tab-btn { padding: 10px 10px; font-size: 0.88em; }
-            .position-header .name { font-size: 1.4em; }
-            .timeline-time { width: 60px; font-size: 0.82em; }
+            .container { padding: 30px 18px 60px; }
+            .header { margin-bottom: 24px; }
+            .header h1 { font-size: 1.7em; }
+            .tab-btn { padding: 12px 12px; font-size: 0.9em; }
+            .position-header .name { font-size: 1.35em; }
+            .sub-title { font-size: 1.02em; }
+            .timeline-time { width: 56px; font-size: 0.82em; }
+            .timeline-row { gap: 10px; }
+            .task-card { padding: 14px 14px; }
+            .timing { padding: 12px 14px; font-size: 0.8em; }
+            .step { gap: 10px; }
+            .step-number { width: 26px; height: 26px; font-size: 0.78em; }
+            .ordered-list li { padding-left: 28px; }
+            .checklist-item input { width: 20px; height: 20px; margin-top: 2px; }
+            .checklist-item label { font-size: 0.95em; }
+        }
+        @media (max-width: 480px) {
+            .container { padding: 24px 14px 50px; }
+            .header h1 { font-size: 1.5em; letter-spacing: -0.3px; }
+            .header p { font-size: 0.85em; }
+            .tab-btn { padding: 11px 10px; font-size: 0.85em; }
+            .position-header { margin-bottom: 22px; padding-bottom: 12px; }
+            .position-header .name { font-size: 1.25em; }
+            .position-header .meta { font-size: 0.82em; }
+            .sub-section { margin-bottom: 26px; }
+            .info-box, .warning-box, .tip-box { padding: 12px 14px; font-size: 0.88em; }
+            .task-card { padding: 13px 13px; }
+            .timing { padding: 10px 12px; font-size: 0.75em; line-height: 1.85; }
+            .step-time { display: block; margin-left: 0; margin-top: 3px; width: fit-content; }
+            .timeline { padding: 12px 14px; }
+            .timeline-time { width: 48px; font-size: 0.78em; }
+            .timeline-text { font-size: 0.88em; }
+            .list li, .ordered-list li { font-size: 0.9em; }
         }
     </style>
 </head>
