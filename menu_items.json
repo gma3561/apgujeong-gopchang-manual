@@ -1,0 +1,19 @@
+{
+  "items": [
+    {
+      "item_id": "ITEM_001",
+      "item_name": "[예시] 대곱창",
+      "category_id": "CAT_001",
+      "base_price": 15000,
+      "description": "신선한 소의 대곱창",
+      "notes": "중등도 매운맛",
+      "availability": "available",
+      "display_order": 1
+    }
+  ],
+  "metadata": {
+    "last_updated": "2026-04-15",
+    "total_items": 1,
+    "note": "원본 파일에서 정보를 기입하면 여기로 정규화됩니다"
+  }
+}

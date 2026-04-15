@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>압구정곱창 Cast Member 매뉴얼</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', 'Noto Sans KR', sans-serif;
+            background: linear-gradient(135deg, #fff5e6 0%, #ffe6cc 50%, #ffdbad 100%);
+            padding: 30px 15px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+        }
+
+        /* 헤더 */
+        .header {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8c42 50%, #ffa502 100%);
+            padding: 50px 40px;
+            border-radius: 20px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header:before {
+            content: "🎉";
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 3em;
+            opacity: 0.2;
+        }
+
+        .header:after {
+            content: "🍖";
+            position: absolute;
+            bottom: 10px;
+            right: 30px;
+            font-size: 3em;
+            opacity: 0.2;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 900;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            letter-spacing: 1px;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+            font-weight: 600;
+        }
+
+        /* 서브헤더 */
+        .sub-header {
+            background: white;
+            padding: 30px 40px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border-left: 6px solid #ff6b6b;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .sub-header h2 {
+            color: #ff6b6b;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .sub-header p {
+            color: #555;
+            font-size: 1em;
+            line-height: 1.7;
+        }
+
+        /* 섹션 */
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 2em;
+            font-weight: 900;
+            color: #ff6b6b;
+            margin-bottom: 25px;
+            padding: 20px 25px;
+            background: linear-gradient(90deg, rgba(255,107,107,0.1) 0%, rgba(255,168,0,0.1) 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-emoji {
+            font-size: 2.5em;
+        }
+
+        /* 팀 카드 */
+        .team-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-top: 5px solid #ff6b6b;
+            position: relative;
+        }
+
+        .team-card.blue {
+            border-top-color: #4ecdc4;
+        }
+
+        .team-card.green {
+            border-top-color: #45b649;
+        }
+
+        .team-card.purple {
+            border-top-color: #9b59b6;
+        }
+
+        .team-card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .team-role-icon {
+            font-size: 2.5em;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,107,107,0.1);
+            border-radius: 12px;
+        }
+
+        .team-card.blue .team-role-icon {
+            background: rgba(78,205,196,0.1);
+        }
+
+        .team-card.green .team-role-icon {
+            background: rgba(69,182,73,0.1);
+        }
+
+        .team-card.purple .team-role-icon {
+            background: rgba(155,89,182,0.1);
+        }
+
+        .team-role-title {
+            flex: 1;
+        }
+
+        .team-role-title h3 {
+            font-size: 1.4em;
+            color: #2d2d2d;
+            margin-bottom: 5px;
+        }
+
+        .team-role-title p {
+            color: #999;
+            font-size: 0.95em;
+        }
+
+        .team-badge {
+            display: inline-block;
+            background: #fff3cd;
+            color: #ff8c00;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        .team-badge.blue {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .team-badge.green {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        /* 업무 목록 */
+        .duty-list {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .duty-list h4 {
+            color: #ff6b6b;
+            margin-bottom: 12px;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .duty-list ul {
+            list-style: none;
+        }
+
+        .duty-list li {
+            padding: 8px 0;
+            padding-left: 28px;
+            position: relative;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .duty-list li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #ff6b6b;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        /* 레시피 박스 */
+        .recipe-box {
+            background: linear-gradient(135deg, #fff9e6 0%, #fffbe6 100%);
+            border: 2px dashed #ffa502;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+        .recipe-title {
+            font-size: 1.4em;
+            color: #ff6b6b;
+            margin-bottom: 15px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .recipe-ingredients {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .ingredient-row {
+            display: grid;
+            grid-template-columns: 100px 150px 1fr;
+            gap: 15px;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+            align-items: center;
+        }
+
+        .ingredient-row:last-child {
+            border-bottom: none;
+        }
+
+        .ingredient-label {
+            font-weight: 600;
+            color: #2d2d2d;
+        }
+
+        .ingredient-amount {
+            background: #fff3cd;
+            padding: 8px 12px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: 600;
+            color: #ff8c00;
+        }
+
+        .ingredient-note {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        /* 팁 박스 */
+        .tip-box {
+            background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
+            border-left: 5px solid #45b649;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .tip-box-title {
+            color: #45b649;
+            font-weight: 700;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tip-box p {
+            color: #333;
+            line-height: 1.7;
+        }
+
+        /* 주의 박스 */
+        .warning-box {
+            background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+            border-left: 5px solid #ff6b6b;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .warning-box-title {
+            color: #ff6b6b;
+            font-weight: 700;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .warning-box p {
+            color: #333;
+            line-height: 1.7;
+        }
+
+        /* 테이블 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            margin: 20px 0;
+        }
+
+        table th {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8c42 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 1.05em;
+        }
+
+        table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #f0f0f0;
+            color: #555;
+        }
+
+        table tr:last-child td {
+            border-bottom: none;
+        }
+
+        table tr:hover {
+            background: #f9f9f9;
+        }
+
+        /* 단계 박스 */
+        .step-box {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+            border: 2px solid #f0f0f0;
+            position: relative;
+            padding-left: 60px;
+        }
+
+        .step-number {
+            position: absolute;
+            left: 15px;
+            top: 15px;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8c42 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.2em;
+        }
+
+        .step-title {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: #2d2d2d;
+            margin-bottom: 8px;
+        }
+
+        .step-content {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        /* 체크리스트 */
+        .checklist-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            .checklist-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .checkbox {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            background: white;
+            border-radius: 8px;
+            border: 2px solid #f0f0f0;
+        }
+
+        .checkbox input {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: #ff6b6b;
+        }
+
+        .checkbox label {
+            cursor: pointer;
+            color: #555;
+            flex: 1;
+        }
+
+        /* 하이라이트 */
+        .highlight {
+            background: linear-gradient(120deg, #ffeb3b33 0%, #ff9c67 100%);
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #ff6b6b;
+        }
+
+        .highlight strong {
+            color: #ff6b6b;
+        }
+
+        /* 하단 */
+        .footer {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8c42 100%);
+            padding: 30px 40px;
+            border-radius: 15px;
+            color: white;
+            text-align: center;
+            margin-top: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .footer h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .footer p {
+            opacity: 0.95;
+            font-size: 0.95em;
+        }
+
+        /* 인쇄 */
+        @media print {
+            body {
+                background: white;
+            }
+            .header, .footer {
+                background: #f5f5f5;
+                color: #2d2d2d;
+            }
+        }
+
+        /* 반응형 */
+        @media (max-width: 640px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            .section-title {
+                font-size: 1.4em;
+            }
+            .team-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 헤더 -->
+        <div class="header">
+            <h1>🍖 압구정곱창</h1>
+            <p>Cast Member 매뉴얼 | 최고의 경험을 만드는 우리들의 이야기</p>
+        </div>
+
+        <!-- 환영 메시지 -->
+        <div class="sub-header">
+            <h2>👋 여기가 바로 우리의 무대입니다!</h2>
+            <p>압구정곱창에 오신 것을 환영합니다! 이 매뉴얼은 우리 팀이 최고의 경험을 제공하기 위해 만들어진 가이드입니다. 각 직원은 이 무대의 스타입니다. 손님들이 감동하는 모습, 그것이 우리의 성공입니다!</p>
+        </div>
+
+        <!-- 팀 소개 -->
+        <div class="section">
+            <div class="section-title">
+                <span class="section-emoji">👥</span>
+                우리 팀을 소개합니다
+            </div>
+
+            <div class="team-card">
+                <div class="team-card-header">
+                    <div class="team-role-icon">🔥</div>
+                    <div class="team-role-title">
+                        <h3>봉녀</h3>
+                        <p>메인 그릴러 | 고기의 마법사</p>
+                    </div>
+                    <span class="team-badge">주방</span>
+                </div>
+                <div class="duty-list">
+                    <h4>🎯 하루의 역할</h4>
+                    <ul>
+                        <li><strong>아침:</strong> 고기 준비 및 일일량 계산 (평일 4~5봉, 주말 6~7봉)</li>
+                        <li><strong>핵심 업무:</strong> 주문이 들어오면 불판에 올려 완벽하게 굽기</li>
+                        <li><strong>타이밍:</strong> 약 1분 30초의 마법 같은 시간</li>
+                        <li><strong>배치:</strong> 곱창은 상단, 대창은 중간, 막창은 하단에서 정확하게</li>
+                    </ul>
+                </div>
+                <div class="tip-box">
+                    <div class="tip-box-title">💡 봉녀만의 팁</div>
+                    <p>고기가 맛있게 구워지는 가장 큰 비결은 <strong>불 세기 조절</strong>입니다. 기름이 튀기 시작하면 불을 줄이고, 색이 나면 위치를 바꿔주세요. 이 섬세함이 바로 우리 음식의 품질을 만듭니다!</p>
+                </div>
+            </div>
+
+            <div class="team-card blue">
+                <div class="team-card-header">
+                    <div class="team-role-icon">🥬</div>
+                    <div class="team-role-title">
+                        <h3>옥화</h3>
+                        <p>야채/전골 담당 | 신선함의 수호자</p>
+                    </div>
+                    <span class="team-badge blue">주방</span>
+                </div>
+                <div class="duty-list">
+                    <h4>🎯 하루의 역할</h4>
+                    <ul>
+                        <li><strong>오픈 첫 순간:</strong> 육수 불 올리기 (이것이 모든 것의 시작!)</li>
+                        <li><strong>야채 정리:</strong> 부추 평일 15~20단, 금요일 30단</li>
+                        <li><strong>전골 마스터:</strong> 소(곱창 140g+양 30g) / 중(곱창 220g+양 40g)</li>
+                        <li><strong>계란찜:</strong> 계란물 1.5국자 + 육수 1국자의 완벽한 조화</li>
+                    </ul>
+                </div>
+                <div class="warning-box">
+                    <div class="warning-box-title">⚠️ 중요한 포인트</div>
+                    <p>신선도는 우리의 약속입니다. 명이나물은 2일 이상 보관하지 않고, 야채는 매일 아침 신선도를 확인하세요. 손님들은 이 섬세함을 느낄 것입니다.</p>
+                </div>
+            </div>
+
+            <div class="team-card green">
+                <div class="team-card-header">
+                    <div class="team-role-icon">🤝</div>
+                    <div class="team-role-title">
+                        <h3>주연</h3>
+                        <p>소스/정리 담당 | 맛의 완성자</p>
+                    </div>
+                    <span class="team-badge green">홀 보조</span>
+                </div>
+                <div class="duty-list">
+                    <h4>🎯 핵심 업무: 소스 제조</h4>
+                    <ul>
+                        <li>한 판당 10개씩, 총 60개+ 소스 준비 (주말은 더 많이)</li>
+                        <li>깍두기, 당근, 오이고추 통이 비워지면 즉시 채우기</li>
+                        <li>간마늘, 간깍두기, 날치알 해동 및 준비</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="team-card purple">
+                <div class="team-card-header">
+                    <div class="team-role-icon">💼</div>
+                    <div class="team-role-title">
+                        <h3>은영</h3>
+                        <p>매니저 | 경험의 지휘자</p>
+                    </div>
+                    <span class="team-badge">관리</span>
+                </div>
+                <div class="duty-list">
+                    <h4>🎯 가장 중요한 임무</h4>
+                    <ul>
+                        <li><strong>고객 데이터 기록:</strong> 날짜 | 국가 | 인원 | 경로 | 자리번호</li>
+                        <li><strong>매니저의 역할:</strong> 매장의 흐름을 관리하고 팀을 이끌기</li>
+                        <li><strong>포스 담당:</strong> 메인 결제 및 손님 만족도 관리</li>
+                    </ul>
+                </div>
+                <div class="highlight">
+                    <strong>💎 데이터가 우리의 미래를 만듭니다.</strong> 매일 기록되는 고객 정보가 우리 비즈니스의 모든 의사결정을 이끕니다.
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div class="team-card">
+                    <div class="team-card-header">
+                        <div class="team-role-icon">😊</div>
+                        <div class="team-role-title">
+                            <h3>경희</h3>
+                            <p>홀 서빙 | 한국 손님 담당</p>
+                        </div>
+                    </div>
+                    <div class="duty-list">
+                        <h4>🎯 서빙의 정석</h4>
+                        <ul>
+                            <li>자리 안내 & 물 제공</li>
+                            <li>고기별 소스 설명</li>
+                            <li>주류/볶음밥 주문</li>
+                            <li>손님 퇴실 시 상 정리</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-card-header">
+                        <div class="team-role-icon">🌟</div>
+                        <div class="team-role-title">
+                            <h3>성옥</h3>
+                            <p>홀 서빙 + 마감 | 중국 손님 담당</p>
+                        </div>
+                    </div>
+                    <div class="duty-list">
+                        <h4>🎯 언어의 다리</h4>
+                        <ul>
+                            <li>중국 손님 응대</li>
+                            <li>소스 설명 (영어/중국어)</li>
+                            <li>홀 서빙</li>
+                            <li>최종 마감 담당</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 레시피 상세 가이드 -->
+        <div class="section">
+            <div class="section-title">
+                <span class="section-emoji">🍳</span>
+                레시피 상세 가이드
+            </div>
+
+            <!-- 구이 -->
+            <div class="recipe-box">
+                <div class="recipe-title">🔥 구이 - 우리의 자랑</div>
+                <p style="color: #666; margin-bottom: 15px;">1인분 기준으로 만드는 완벽한 구이. 각 부위의 특징을 이해하고 조리하면, 손님들의 감탄이 나옵니다.</p>
+
+                <table>
+                    <tr>
+                        <th>부위</th>
+                        <th>수량</th>
+                        <th>준비 방법</th>
+                        <th>특징</th>
+                    </tr>
+                    <tr>
+                        <td><strong>곱창</strong></td>
+                        <td>160g</td>
+                        <td>5cm 간격으로 손질하여 쟁반에 편으로 나열, 숙성고에서 준비</td>
+                        <td>구수한 맛과 쫄깃한 식감</td>
+                    </tr>
+                    <tr>
+                        <td><strong>대창</strong></td>
+                        <td>230g</td>
+                        <td>5cm 간격으로 손질하여 1/2 바트에 키친타올 깔고 준비</td>
+                        <td>부드럽고 담백한 맛</td>
+                    </tr>
+                    <tr>
+                        <td><strong>막창</strong></td>
+                        <td>150g</td>
+                        <td>편으로 자른 후 1/2 바트에 키친타올 깔고 준비</td>
+                        <td>고소한 기름맛과 톡 쏘는 식감</td>
+                    </tr>
+                    <tr>
+                        <td><strong>양</strong></td>
+                        <td>150g</td>
+                        <td>진공포장 뜯어서 키친타올로 수분을 부드럽게 제거</td>
+                        <td>산뜻한 육향과 부드러운 식감</td>
+                    </tr>
+                </table>
+
+                <div style="background: #f5f5f5; padding: 15px; border-radius: 8px; margin-top: 15px;">
+                    <p><strong>🎯 가니쉬 (한 판 기준):</strong></p>
+                    <p style="margin-top: 8px;">부추무침 100~120g · 양파 50g · 대파 50g · 호박 30g · 감자 2조각 · 새송이 30g · 떡 4개</p>
+                </div>
+
+                <div class="tip-box">
+                    <div class="tip-box-title">💡 구이를 완벽하게 하는 비결</div>
+                    <p>불판 배치가 중요합니다. 곱창은 상단에서 강하게, 대창은 중간에서 중불로, 막창은 하단에서 약불로 구우세요. 색이 많이 나는 부분은 불판의 끝으로, 덜 익은 부분은 중앙으로 움직여주면 됩니다. <strong>이것이 바로 프로의 기술입니다!</strong></p>
+                </div>
+            </div>
+
+            <!-- 전골 -->
+            <div class="recipe-box">
+                <div class="recipe-title">🍲 전골 - 따뜻한 위로</div>
+                <p style="color: #666; margin-bottom: 15px;">여름이든 겨울이든, 전골 한 그릇은 우리 손님들의 마음을 녹입니다.</p>
+
+                <div style="background: white; padding: 15px; border-radius: 8px; margin: 15px 0;">
+                    <table style="margin: 0;">
+                        <tr>
+                            <th style="width: 30%;">사이즈</th>
+                            <th>곱창</th>
+                            <th>양</th>
+                        </tr>
+                        <tr>
+                            <td><strong>소 (1~2인)</strong></td>
+                            <td>140g</td>
+                            <td>30g</td>
+                        </tr>
+                        <tr>
+                            <td><strong>중 (2~3인)</strong></td>
+                            <td>220g</td>
+                            <td>40g</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <p style="color: #555; margin-top: 15px;"><strong>추가 재료:</strong> 호박 · 청양고추 · 배추 · 양파 · 떡국떡 · 두부 · 당면 · 대파</p>
+
+                <div style="background: #e8f5e9; padding: 15px; border-radius: 8px; margin-top: 15px; border-left: 4px solid #45b649;">
+                    <p><strong>마무리 순서 (이 순서가 중요합니다!):</strong></p>
+                    <ol style="margin-left: 20px; margin-top: 10px; color: #333;">
+                        <li>한소끔 끓인 후</li>
+                        <li>깻잎 올리기</li>
+                        <li>팽이버섯 올리기</li>
+                        <li>부추 올리기 (마지막 순간)</li>
+                        <li>들깨가루 1스푼 (완성!)</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- 계란찜 -->
+            <div class="recipe-box">
+                <div class="recipe-title">🥚 계란찜 - 부드러운 감동</div>
+                <p style="color: #666; margin-bottom: 15px;">1호 뚝배기에 담는 우리의 대표 요리입니다.</p>
+
+                <div class="ingredient-row" style="border: none; padding: 0;">
+                    <div class="ingredient-label">계란물</div>
+                    <div class="ingredient-amount">1.5국자</div>
+                    <div class="ingredient-note">계란 깨서 물+맛소금 추가, 홍두깨 그라인더로 간 것</div>
+                </div>
+                <div class="ingredient-row" style="border: none; padding: 0;">
+                    <div class="ingredient-label">계란찜 육수</div>
+                    <div class="ingredient-amount">1국자</div>
+                    <div class="ingredient-note">멸치+디포리+소금으로 끓인 후 한소끔 식힌 것</div>
+                </div>
+
+                <div style="background: #fff3cd; padding: 15px; border-radius: 8px; margin-top: 15px;">
+                    <p><strong>조리 과정:</strong></p>
+                    <ol style="margin-left: 20px; margin-top: 10px; color: #333;">
+                        <li>뚝배기에 계란물 1.5 + 육수 1국자 혼합</li>
+                        <li>강불에서 뜨거울 때까지 올림</li>
+                        <li>뚝배기 옆부분 익으면 약불로 줄이기</li>
+                        <li>뚜껑 덮고 속까지 익히기</li>
+                        <li>연기 나면 불 끄기</li>
+                        <li>삼바리에 받쳐 제공</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- 일일 준비량 -->
+        <div class="section">
+            <div class="section-title">
+                <span class="section-emoji">📊</span>
+                일일 준비량 (이것이 계획입니다)
+            </div>
+
+            <table>
+                <tr>
+                    <th style="width: 20%;">요일</th>
+                    <th>곱창</th>
+                    <th>대창</th>
+                    <th>막창</th>
+                </tr>
+                <tr>
+                    <td><strong>평일</strong></td>
+                    <td style="text-align: center; font-weight: 600; color: #ff6b6b;">8-10kg</td>
+                    <td style="text-align: center; font-weight: 600; color: #ff8c42;">4-5kg</td>
+                    <td style="text-align: center; font-weight: 600; color: #ffa502;">2-3kg</td>
+                </tr>
+                <tr>
+                    <td><strong>주말</strong></td>
+                    <td style="text-align: center; font-weight: 600; color: #ff6b6b;">12-14kg</td>
+                    <td style="text-align: center; font-weight: 600; color: #ff8c42;">6-8kg</td>
+                    <td style="text-align: center; font-weight: 600; color: #ffa502;">4-5kg</td>
+                </tr>
+            </table>
+
+            <div class="highlight">
+                <strong>👀 중요한 주의사항:</strong> 부추는 평일 15~20단, 금요일 30단을 준비합니다. 이 수치를 정확히 계산하면, 재료 낭비를 줄이고 신선함을 유지할 수 있습니다.
+            </div>
+        </div>
+
+        <!-- 오픈/마감 체크리스트 -->
+        <div class="section">
+            <div class="section-title">
+                <span class="section-emoji">✅</span>
+                오늘하루의 시작과 마무리
+            </div>
+
+            <div style="margin-bottom: 30px;">
+                <h3 style="color: #45b649; font-size: 1.3em; margin-bottom: 15px;">🟢 오픈 준비 체크리스트</h3>
+                <div class="checklist-grid">
+                    <div class="checkbox">
+                        <input type="checkbox" id="check1">
+                        <label for="check1">유니폼/위생 확인</label>
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" id="check2">
+                        <label for="check2">예약/단체 확인</label>
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" id="check3">
+                        <label for="check3">테이블 정리</label>
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" id="check4">
+                        <label for="check4">고기 해동 상태 확인</label>
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" id="check5">
+                        <label for="check5">반찬 세팅</label>
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" id="check6">
+                        <label for="check6">POS 작동 확인</label>
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" id="check7">
+                        <label for="check7">냉장/냉동 온도 확인</label>
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" id="check8">
+                        <label for="check8">직원 브리핑</label>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 style="color: #ff6b6b; font-size: 1.3em; margin-bottom: 15px;">🔴 마감 정리 체크리스트</h3>
+                <div class="checklist-grid">
+                    <div class="checkbox">
+                        <input type="checkbox" id="check9">
+                        <label for="check9">테이블/의자 정리</label>
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" id="check10">
+                        <label for="check10">바닥 청소</label>
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" id="check11">
+                        <label for="check11">불판/조리도구 세척</label>
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" id="check12">
+                        <label for="check12">기름 정리</label>
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" id="check13">
+                        <label for="check13">남은 재료 체크</label>
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" id="check14">
+                        <label for="check14">내일 발주 계산</label>
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" id="check15">
+                        <label for="check15">가스/전기 차단</label>
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" id="check16">
+                        <label for="check16">매출 정산</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 핵심 가치 -->
+        <div class="section">
+            <div class="section-title">
+                <span class="section-emoji">💎</span>
+                우리가 지켜야 할 약속들
+            </div>
+
+            <div class="step-box">
+                <div class="step-number">1</div>
+                <div class="step-title">📊 모든 수치는 기록입니다</div>
+                <div class="step-content">고기량, 야채량, 소스량, 고객 데이터... 이 모든 것이 우리의 미래를 만들고 있습니다. 기록하지 않으면 관리되지 않습니다!</div>
+            </div>
+
+            <div class="step-box">
+                <div class="step-number">2</div>
+                <div class="step-title">🌿 신선도는 우리의 약속</div>
+                <div class="step-content">야채는 매일 아침 신선도를 확인합니다. 명이나물은 2일 이상 보관하지 않습니다. 손님들은 이 섬세함을 느낄 것입니다.</div>
+            </div>
+
+            <div class="step-box">
+                <div class="step-number">3</div>
+                <div class="step-title">🧼 위생이 최우선</div>
+                <div class="step-content">손 씻기 (시간당 1회) · 도구 소독 · 온도 기록 · 올바른 저장방법... 이것이 우리 음식의 안전을 지키는 방법입니다.</div>
+            </div>
+
+            <div class="step-box">
+                <div class="step-number">4</div>
+                <div class="step-title">😊 고객 만족이 우리의 성공</div>
+                <div class="step-content">소스 설명의 정확성 · 친절한 응대 · 신속한 서빙... 이 모든 작은 것들이 모여 손님의 미소가 됩니다. 그것이 우리의 성공입니다!</div>
+            </div>
+        </div>
+
+        <!-- 하단 -->
+        <div class="footer">
+            <h3>🌟 우리는 그저 음식을 팔지 않습니다</h3>
+            <p>우리는 <strong>경험</strong>을 만듭니다. 손님들이 우리를 떠나며 짓는 미소, 그것이 우리의 가장 큰 보상입니다.</p>
+            <p style="margin-top: 15px; font-size: 0.9em;">이 매뉴얼을 인쇄하여 각 구역에 부착하면, 우리의 품질을 더욱 높일 수 있습니다.</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+{
+  "categories": [
+    {
+      "category_id": "CAT_001",
+      "category_name": "곱창류",
+      "display_order": 1,
+      "description": "소곱창, 대곱창 등"
+    },
+    {
+      "category_id": "CAT_002",
+      "category_name": "소곱창류",
+      "display_order": 2,
+      "description": "소의 작은 곱창"
+    },
+    {
+      "category_id": "CAT_003",
+      "category_name": "육류",
+      "display_order": 3,
+      "description": "쇠고기, 돼지고기 등"
+    },
+    {
+      "category_id": "CAT_004",
+      "category_name": "반찬/사이드",
+      "display_order": 4,
+      "description": "기본 반찬 및 사이드메뉴"
+    },
+    {
+      "category_id": "CAT_005",
+      "category_name": "음료",
+      "display_order": 5,
+      "description": "음료 및 주류"
+    },
+    {
+      "category_id": "CAT_006",
+      "category_name": "세트메뉴",
+      "display_order": 6,
+      "description": "조합 패키지"
+    }
+  ],
+  "metadata": {
+    "last_updated": "2026-04-15",
+    "total_categories": 6
+  }
+}

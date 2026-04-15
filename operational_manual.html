@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>압구정곱창 운영 매뉴얼</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            padding: 40px 20px;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        /* 헤더 */
+        .header {
+            background: linear-gradient(135deg, #2d3436 0%, #1f2937 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        /* 메인 콘텐츠 */
+        .content {
+            padding: 40px;
+        }
+
+        /* 섹션 */
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 2em;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3b82f6;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title .icon {
+            font-size: 1.3em;
+        }
+
+        /* 서브섹션 */
+        .subsection {
+            margin-bottom: 30px;
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .subsection-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #2d3436;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            background: #3b82f6;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 32px;
+            font-weight: 700;
+            font-size: 0.9em;
+        }
+
+        /* 직원 정보 카드 */
+        .staff-card {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .staff-card:hover {
+            border-color: #3b82f6;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+        }
+
+        .staff-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .staff-name {
+            font-weight: 700;
+            color: #1f2937;
+            font-size: 1.1em;
+        }
+
+        .staff-role {
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .staff-duty {
+            color: #4b5563;
+            margin-left: 0;
+        }
+
+        .staff-duty li {
+            margin-bottom: 8px;
+            list-style-position: inside;
+        }
+
+        /* 레시피 테이블 */
+        .recipe-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+
+        .recipe-title {
+            font-weight: 700;
+            color: #92400e;
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+
+        .recipe-content {
+            color: #78350f;
+            line-height: 1.7;
+        }
+
+        .recipe-content strong {
+            color: #7c2d12;
+        }
+
+        /* 정량 테이블 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+        }
+
+        table th {
+            background: #f3f4f6;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            color: #1f2937;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        table td {
+            padding: 12px;
+            border-bottom: 1px solid #e5e7eb;
+            color: #4b5563;
+        }
+
+        table tr:hover {
+            background: #f9fafb;
+        }
+
+        /* 체크리스트 */
+        .checklist {
+            background: #ecfdf5;
+            border-left: 4px solid #10b981;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+
+        .checklist-title {
+            font-weight: 700;
+            color: #047857;
+            margin-bottom: 12px;
+        }
+
+        .checklist ul {
+            list-style: none;
+        }
+
+        .checklist li {
+            padding: 8px 0;
+            color: #065f46;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .checklist li:before {
+            content: "✓";
+            color: #10b981;
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+
+        /* 경고 박스 */
+        .warning-box {
+            background: #fee2e2;
+            border-left: 4px solid #ef4444;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 15px 0;
+            color: #7f1d1d;
+        }
+
+        .warning-box strong {
+            color: #991b1b;
+        }
+
+        /* 구역별 부착 가이드 */
+        .location-guide {
+            background: #f0f9ff;
+            border: 2px solid #0ea5e9;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .location-title {
+            font-weight: 700;
+            color: #0369a1;
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+
+        .location-content {
+            color: #0c4a6e;
+        }
+
+        .location-content strong {
+            color: #0e7490;
+        }
+
+        /* 플로우차트 */
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .timeline-marker {
+            width: 40px;
+            height: 40px;
+            background: #3b82f6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-right: 20px;
+        }
+
+        .timeline-content {
+            flex: 1;
+            padding-top: 5px;
+        }
+
+        .timeline-content h4 {
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+
+        .timeline-content p {
+            color: #4b5563;
+            margin: 5px 0;
+        }
+
+        /* 하단 가이드 */
+        .footer-guide {
+            background: #f3f4f6;
+            padding: 30px;
+            margin-top: 40px;
+            border-radius: 8px;
+        }
+
+        .footer-guide h3 {
+            color: #1f2937;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .guide-item {
+            display: flex;
+            margin-bottom: 15px;
+            gap: 12px;
+        }
+
+        .guide-item-number {
+            width: 28px;
+            height: 28px;
+            background: #3b82f6;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9em;
+            flex-shrink: 0;
+        }
+
+        .guide-item-content {
+            color: #4b5563;
+            flex: 1;
+        }
+
+        /* 페이지 나눔 */
+        .page-break {
+            page-break-before: always;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 2px solid #e5e7eb;
+        }
+
+        /* 인쇄 스타일 */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+
+            .page-break {
+                page-break-before: always;
+            }
+        }
+
+        /* 반응형 */
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+            }
+
+            .header {
+                padding: 40px 20px;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            table {
+                font-size: 0.9em;
+            }
+
+            table th, table td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 헤더 -->
+        <div class="header">
+            <h1>🍖 압구정곱창</h1>
+            <p>운영 매뉴얼 & 직원 배치 가이드</p>
+        </div>
+
+        <!-- 콘텐츠 -->
+        <div class="content">
+
+            <!-- 1단계: 준비 단계 -->
+            <div class="section">
+                <div class="section-title">
+                    <span class="icon">🌅</span>
+                    영업 전 (준비 단계)
+                </div>
+
+                <!-- 식재료 준비 -->
+                <div class="subsection">
+                    <div class="subsection-title">
+                        <span class="step-number">1</span>
+                        식재료 및 주방 세팅
+                    </div>
+
+                    <div class="recipe-box">
+                        <div class="recipe-title">🥬 부추</div>
+                        <div class="recipe-content">
+                            4cm 간격으로 썬다 → 개수대에서 물을 2-3회 갈아가며 세척<br>
+                            <strong>핵심:</strong> 뿌리 부분의 갈색 이물질 제거 필수<br>
+                            타공채반에 물기 제거 → 비닐봉투에 담아 냉장보관<br>
+                            <strong>일일 사용량만 꺼내 사용</strong>
+                        </div>
+                    </div>
+
+                    <div class="recipe-box">
+                        <div class="recipe-title">🧅 양파</div>
+                        <div class="recipe-content">
+                            입고시: 껍질, 뿌리 부분 제거<br>
+                            <strong>전골용:</strong> 심은 잘게 썬다 (전골에 직접 사용)<br>
+                            <strong>구이용:</strong> 2-3cm 큐브 형태로 손질
+                        </div>
+                    </div>
+
+                    <div class="recipe-box">
+                        <div class="recipe-title">🌿 대파</div>
+                        <div class="recipe-content">
+                            뿌리, 잎 끝 손질 → 파결 사이사이 흙 제거<br>
+                            물기 제거 → 뿌리부터 반으로 갈라 3cm 간격으로 절단<br>
+                            구이용 준비 완료
+                        </div>
+                    </div>
+
+                    <div class="recipe-box">
+                        <div class="recipe-title">🍄 새송이</div>
+                        <div class="recipe-content">
+                            이물질 가볍게 털어낸다<br>
+                            가로로 누워서 3등분 절단<br>
+                            0.5cm 간격으로 얇게 썬다 → 구이용 준비
+                        </div>
+                    </div>
+
+                    <div class="recipe-box">
+                        <div class="recipe-title">🧄 마늘</div>
+                        <div class="recipe-content">
+                            <strong>손질:</strong> 꼭지 제거 → 세척 → 물기 제거<br>
+                            <strong>간마늘:</strong> 일부 간다 (소스용)<br>
+                            <strong>구이마늘:</strong> 나머지는 구이용으로 사용
+                        </div>
+                    </div>
+
+                    <div class="recipe-box">
+                        <div class="recipe-title">🎃 단호박</div>
+                        <div class="recipe-content">
+                            반으로 자르고 숟가락으로 가운데 씨 제거<br>
+                            1cm 간격으로 절단 → 구이용 준비
+                        </div>
+                    </div>
+
+                    <div class="recipe-box">
+                        <div class="recipe-title">🥔 감자</div>
+                        <div class="recipe-content">
+                            필러로 깎아낸다<br>
+                            편으로 넓게 절단<br>
+                            <strong>필수:</strong> 끓는 물에 데치기 (갈변 현상 방지)<br>
+                            구이용 준비
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 반찬 준비 -->
+                <div class="subsection">
+                    <div class="subsection-title">
+                        <span class="step-number">2</span>
+                        반찬 및 소스 준비
+                    </div>
+
+                    <div class="recipe-box">
+                        <div class="recipe-title">🥬 깻잎</div>
+                        <div class="recipe-content">
+                            입고시 한 장씩 물에 세척<br>
+                            꼭지 제거 → 3cm 간격으로 절단<br>
+                            수분 제거 → 전골용 준비
+                        </div>
+                    </div>
+
+                    <div class="recipe-box">
+                        <div class="recipe-title">🌾 들깨가루</div>
+                        <div class="recipe-content">
+                            포장지 뜯어 바트에 덜어서 관리<br>
+                            <strong>타이밍:</strong> 전골을 다 끓인 후 마지막에 1스푼 제공
+                        </div>
+                    </div>
+
+                    <div class="recipe-box">
+                        <div class="recipe-title">🧄 마늘가루</div>
+                        <div class="recipe-content">
+                            구이류 초벌 완성 후 마지막 세팅<br>
+                            <strong>골고루 뿌려서 제공</strong>
+                        </div>
+                    </div>
+
+                    <div class="recipe-box">
+                        <div class="recipe-title">🌿 명이나물</div>
+                        <div class="recipe-content">
+                            입고시 꼭지부분 2cm 남겨두고 절단<br>
+                            바트에 켜켜히 쌓고 남은 간장소스 잠길 정도로 담기<br>
+                            찬바트 냉장고에 보관 (0-5℃)<br>
+                            필요량만 덜어 사용
+                        </div>
+                    </div>
+
+                    <div class="recipe-box">
+                        <div class="recipe-title">🥒 깍두기 / 동치미</div>
+                        <div class="recipe-content">
+                            입고시 봉지째 냉장고에 입고<br>
+                            사용분량은 육수냉장고에 배치 (0-5℃ 유지)<br>
+                            필요량만 덜어 사용
+                        </div>
+                    </div>
+
+                    <div class="recipe-box">
+                        <div class="recipe-title">🌶️ 쌈장</div>
+                        <div class="recipe-content">
+                            <strong>배합 비율:</strong> 된장 3 : 고추장 1<br>
+                            사이다로 농도 조절<br>
+                            바트에 덜어 필요량씩 사용
+                        </div>
+                    </div>
+
+                    <div class="recipe-box">
+                        <div class="recipe-title">🥬 아삭이</div>
+                        <div class="recipe-content">
+                            일일 필요량만 준비<br>
+                            꼭지 제거 → 세척 → 물기 제거<br>
+                            3등분 절단 → 1/2 바트에 키친타올 깔고<br>
+                            찬바트냉장고 준비
+                        </div>
+                    </div>
+
+                    <div class="recipe-box">
+                        <div class="recipe-title">🥕 당근</div>
+                        <div class="recipe-content">
+                            필요량 준비<br>
+                            필러로 껍질 제거<br>
+                            반 자르고 아삭이 크기로 절단<br>
+                            1/2 바트에 물에 잠길 정도로 담기<br>
+                            찬바트냉장고에 준비
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 소스 준비 -->
+                <div class="subsection">
+                    <div class="subsection-title">
+                        <span class="step-number">3</span>
+                        소스 및 추가 요리 준비
+                    </div>
+
+                    <table>
+                        <tr>
+                            <th style="width: 20%;">소스명</th>
+                            <th>구성</th>
+                            <th>용도</th>
+                        </tr>
+                        <tr>
+                            <td><strong>간장청양마늘소스</strong></td>
+                            <td>간장 절반 + 마늘 1티스푼 + 청양고추 반스푼</td>
+                            <td>곱창 찍어먹기</td>
+                        </tr>
+                        <tr>
+                            <td><strong>소금장</strong></td>
+                            <td>참기름 1스푼 + 구운후추소금 1티스푼</td>
+                            <td>대창, 막창</td>
+                        </tr>
+                        <tr>
+                            <td><strong>대창소스</strong></td>
+                            <td>특별 소스</td>
+                            <td>대창 담금용 (종지 1스푼)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>마늘소스</strong></td>
+                            <td>특양용 소스</td>
+                            <td>특양 주문시 사용</td>
+                        </tr>
+                    </table>
+
+                    <div class="recipe-box">
+                        <div class="recipe-title">🍳 계란찜 준비</div>
+                        <div class="recipe-content">
+                            <strong>계란:</strong> 평일 3판 기준<br>
+                            계란 깨기 → 물 + 맛소금 추가<br>
+                            홍두깨 그라인더로 갈아낸다<br>
+                            <br>
+                            <strong>계란찜 육수:</strong><br>
+                            멸치, 디포리, 소금으로 육수 끓이기<br>
+                            한소끔 식혀서 준비<br>
+                            <br>
+                            <strong>포션:</strong> 1호 뚝배기<br>
+                            계란 1.5국자 + 계란찜 육수 1국자
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 홀 준비 -->
+                <div class="subsection">
+                    <div class="subsection-title">
+                        <span class="step-number">4</span>
+                        홀 준비 (직원3 담당)
+                    </div>
+
+                    <div class="checklist">
+                        <div class="checklist-title">운영 전 체크리스트</div>
+                        <ul>
+                            <li>전일 매출 확인</li>
+                            <li>직원 출퇴근 체크</li>
+                            <li>예약손님 및 체험단 확인</li>
+                            <li>바닥 청소</li>
+                            <li>테이블 & 의자 알코올 소독</li>
+                            <li>테이블 앞접시와 컵 세팅 (4인 테이블 기준 2인)</li>
+                            <li>찬바트 냉장고 세팅 (기본찬 즉시 제공 가능하도록)</li>
+                            <li>간장청양마늘소스 / 소금장 5세트 제조 (판 10개 기준)</li>
+                            <li>부탄가스 박스에서 비닐 벗겨 개별 세팅</li>
+                            <li>수저, 냅킨, 물, 티슈 보충</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2단계: 영업 중 -->
+            <div class="section page-break">
+                <div class="section-title">
+                    <span class="icon">🔥</span>
+                    영업 중 (운영 단계)
+                </div>
+
+                <!-- 주방 조리 -->
+                <div class="subsection">
+                    <div class="subsection-title">
+                        <span class="step-number">1</span>
+                        메인 주방 그릴러 (직원6 담당)
+                    </div>
+
+                    <div class="warning-box">
+                        <strong>⚠️ 중요:</strong> 고기 굽기는 시간과 온도 관리가 가장 중요합니다!
+                    </div>
+
+                    <table>
+                        <tr>
+                            <th>부위</th>
+                            <th>평일</th>
+                            <th>주말</th>
+                            <th>준비 방법</th>
+                            <th>제공량</th>
+                        </tr>
+                        <tr>
+                            <td><strong>곱창</strong></td>
+                            <td>8-10kg</td>
+                            <td>12-14kg</td>
+                            <td>5cm 간격 손질 (기름, 못난이 제거)<br>쟁반에 편으로 나열<br>종이호일 덮어 숙성고 준비</td>
+                            <td>180g</td>
+                        </tr>
+                        <tr>
+                            <td><strong>막창</strong></td>
+                            <td>2-3kg</td>
+                            <td>4-5kg</td>
+                            <td>편으로 썰기<br>1/2 바트에 키친타올 깔고 준비</td>
+                            <td>150g</td>
+                        </tr>
+                        <tr>
+                            <td><strong>대창</strong></td>
+                            <td>4-5kg</td>
+                            <td>6-8kg</td>
+                            <td>5cm 간격 손질 (기름, 못난이 제거)<br>1/2 바트에 키친타올 깔고<br>숙성고 준비</td>
+                            <td>180g</td>
+                        </tr>
+                        <tr>
+                            <td><strong>특양</strong></td>
+                            <td colspan="2">진공포장</td>
+                            <td>포장 뜯기<br>키친타올로 수분 제거<br>1/2 바트에 준비</td>
+                            <td>120g</td>
+                        </tr>
+                        <tr>
+                            <td><strong>염통</strong></td>
+                            <td colspan="2">진공포장</td>
+                            <td>포장 뜯기<br>키친타올로 수분 제거<br>1/2 바트에 준비</td>
+                            <td>150g</td>
+                        </tr>
+                    </table>
+
+                    <div class="recipe-box">
+                        <div class="recipe-title">🔥 그릴 조리 프로세스</div>
+                        <div class="recipe-content">
+                            <strong>1단계 - 준비</strong><br>
+                            중량에 맞게 계량 → 하단 불판 올리기<br>
+                            강불로 착화<br>
+                            <br>
+                            <strong>2단계 - 초벌 구우기 (약 1분 30초)</strong><br>
+                            • 곱창: 기름이 눈에 보이도록 고기부분이 불판에 닿게 배치<br>
+                            • 대창: 중량에 맞게 불판 중간 아래 배치<br>
+                            • 막창: 맨밑에 배치<br>
+                            • 기름이 튀기시작 → 큰불 줄이고 가운데불로만 조리<br>
+                            <br>
+                            <strong>3단계 - 색 조절 & 재배치</strong><br>
+                            • 색이 많이 나는 곱창 → 불판 맨끝 또는 모서리로 이동<br>
+                            • 얇은 곡창 → 덜구워진면을 불판에 닿게 배치<br>
+                            • 대창 노랗게 변하면 → 곱창 아래 우측에 배치<br>
+                            • 막창 구워지기시작 → 곱창 아래 좌측에 배치<br>
+                            • 염통 → 가운데에 배치<br>
+                            <br>
+                            <strong>4단계 - 야채 배치</strong><br>
+                            감자 2개 / 단호박 2개 / 양파 50g / 대파 50g / 새송이 50g<br>
+                            떡 4개 (정갈하게 배치)<br>
+                            <br>
+                            <strong>5단계 - 마무리</strong><br>
+                            마늘가루 + 다시다 뿌리기<br>
+                            막창과 특양에 후추 뿌리기
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 홀 서빙 -->
+                <div class="subsection">
+                    <div class="subsection-title">
+                        <span class="step-number">2</span>
+                        홀 서빙 및 응대
+                    </div>
+
+                    <div class="recipe-box">
+                        <div class="recipe-title">🍽️ 서빙 프로세스</div>
+                        <div class="recipe-content">
+                            <strong>1단계 - 패스</strong><br>
+                            홀인원이 앞쪽에서 주문서와 함께 그릴에서 가져가기<br>
+                            <br>
+                            <strong>2단계 - 홀 세팅</strong><br>
+                            야채류, 염통 뒤집기<br>
+                            곱창에 붙은 기름 선제적으로 정리<br>
+                            앞쪽 빈공간에 부추무침 올리기<br>
+                            <br>
+                            <strong>3단계 - 테이블 서브</strong><br>
+                            가위와 집게를 들고 구이야채와 부추 한번 뒤집기<br>
+                            한쪽에만 기름이 먹지 않도록 정리<br>
+                            <br>
+                            <strong>4단계 - 고객 응대</strong><br>
+                            잘구워진 곱창을 손님 간장소스 위에 청양고추와 함께 드릴 수 있도록 첫점 제공<br>
+                            염통 먼저 잘라놓기 (덜익은 면이 구워질 수 있게)<br>
+                            대창 & 막창은 한입크기로 잘라서 제공<br>
+                            <br>
+                            <strong>5단계 - 소스 권장</strong><br>
+                            대창 → 대창소스<br>
+                            막창 → 기름장<br>
+                            <br>
+                            <strong>⭐ 팁:</strong> 내장류는 기름이 많으니<br>
+                            명이나물 & 부추무침과 함께 드시면 느끼함 상쇄!
+                        </div>
+                    </div>
+
+                    <div class="recipe-box">
+                        <div class="recipe-title">🍚 추가 요리</div>
+                        <div class="recipe-content">
+                            <strong>볶음밥:</strong> 영업중 밥 5인분 남았을시 바로 압력솥에 쌀 넣고 씻어 준비<br>
+                            <br>
+                            <strong>모짜렐라통치즈:</strong> 입고된 사이즈에서 가로로 절반 자르기<br>
+                            0.4cm 간격으로 슬라이싱 → 주문시 앞접시에 옮겨 서브
+                        </div>
+                    </div>
+
+                    <div class="staff-card">
+                        <div class="staff-header">
+                            <span class="staff-name">직원1/2</span>
+                            <span class="staff-role">홀 담당</span>
+                        </div>
+                        <ul class="staff-duty">
+                            <li>한국 손님 응대 & 소스 설명</li>
+                            <li>주류 및 볶음밥 서빙</li>
+                            <li>퇴실 테이블 정리</li>
+                        </ul>
+                    </div>
+
+                    <div class="staff-card">
+                        <div class="staff-header">
+                            <span class="staff-name">직원3</span>
+                            <span class="staff-role">홀 담당</span>
+                        </div>
+                        <ul class="staff-duty">
+                            <li>방문 현황 작성 (국적, 경로 등)</li>
+                            <li>매장 온도 및 수납함 안내</li>
+                            <li>중국 손님 응대 & 소스 설명</li>
+                            <li>퇴실 테이블 정리</li>
+                        </ul>
+                    </div>
+
+                    <div class="staff-card">
+                        <div class="staff-header">
+                            <span class="staff-name">직원4</span>
+                            <span class="staff-role">보조</span>
+                        </div>
+                        <ul class="staff-duty">
+                            <li>상차림 지원</li>
+                            <li>포스 계산 보조</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3단계: 마감 -->
+            <div class="section">
+                <div class="section-title">
+                    <span class="icon">🌙</span>
+                    영업 후 (마감 단계)
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">
+                        <span class="step-number">1</span>
+                        마감 체크리스트
+                    </div>
+
+                    <div class="staff-card">
+                        <div class="staff-header">
+                            <span class="staff-name">직원7</span>
+                            <span class="staff-role">발주 담당</span>
+                        </div>
+                        <ul class="staff-duty">
+                            <li>익일 사용 고기 최종 발주</li>
+                            <li>야채 최종 발주</li>
+                        </ul>
+                    </div>
+
+                    <div class="staff-card">
+                        <div class="staff-header">
+                            <span class="staff-name">직원3</span>
+                            <span class="staff-role">마감 담당</span>
+                        </div>
+                        <ul class="staff-duty">
+                            <li>수저 세트 세척</li>
+                            <li>라스트 오더 확인</li>
+                            <li>마감 안내</li>
+                        </ul>
+                    </div>
+
+                    <div class="staff-card">
+                        <div class="staff-header">
+                            <span class="staff-name">직원2 / 직원1</span>
+                            <span class="staff-role">비품 보충</span>
+                        </div>
+                        <ul class="staff-duty">
+                            <li>주류 (맥주/소주) 채우기</li>
+                            <li>소모품 (냅킨/물티슈) 보충</li>
+                        </ul>
+                    </div>
+
+                    <div class="staff-card">
+                        <div class="staff-header">
+                            <span class="staff-name">직원1</span>
+                            <span class="staff-role">최종 총괄</span>
+                        </div>
+                        <ul class="staff-duty">
+                            <li>전체 매장 마감</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 구역별 부착 가이드 -->
+            <div class="section page-break">
+                <div class="section-title">
+                    <span class="icon">📌</span>
+                    구역별 매뉴얼 부착 위치
+                </div>
+
+                <div class="location-guide">
+                    <div class="location-title">🏠 [주방/준비 구역] - 조리 매뉴얼</div>
+                    <div class="location-content">
+                        <strong>부착 위치:</strong> 화구 앞 또는 식재료 소분대 상단<br><br>
+                        <strong>부착 내용:</strong><br>
+                        📋 계란찜: 계란물(1.5국자) + 육수(1국자)<br>
+                        📋 구이(1인분 정량): 곱창 160g / 대창 230g / 막창 150g / 양 150g<br>
+                        📋 가니쉬 세팅: 부추 100~120g, 양파 50g, 대파 50g, 호박 30g, 감자 2조각, 버섯 30g, 떡 4개<br>
+                        📋 전골(소/중): 곱창(140g/220g) + 양(30g/40g) 및 부재료 순서
+                    </div>
+                </div>
+
+                <div class="location-guide">
+                    <div class="location-title">🍽️ [배식구/패스 구역] - 서비스 가이드</div>
+                    <div class="location-content">
+                        <strong>부착 위치:</strong> 주방에서 홀로 음식이 나가는 입구 벽면<br><br>
+                        <strong>부착 내용:</strong><br>
+                        ✓ 직원7: "천엽/간 신선도 확인했나요?"<br>
+                        ✓ 직원4: "소스 60개 이상 준비되었나요?"<br>
+                        ✓ 직원3: "오늘의 예약석 배정 확인했나요?"
+                    </div>
+                </div>
+
+                <div class="location-guide">
+                    <div class="location-title">💳 [홀/포스 구역] - 고객 응대 매뉴얼</div>
+                    <div class="location-content">
+                        <strong>부착 위치:</strong> 포스기 하단 또는 직원 대기실 거울 옆<br><br>
+                        <strong>부착 내용:</strong><br>
+                        👉 직원1/2: 손님 안내시 물 제공 및 고기 부위별 소스 매칭 설명<br>
+                        👉 직원3: 방문 현황(국적, 경로 등) 필수 기록 및 의자 수납함 안내 멘트
+                    </div>
+                </div>
+            </div>
+
+            <!-- 부착 팁 -->
+            <div class="section">
+                <div class="section-title">
+                    <span class="icon">💡</span>
+                    위생 및 교육 매뉴얼 부착 팁
+                </div>
+
+                <div class="guide-item">
+                    <div class="guide-item-number">1</div>
+                    <div class="guide-item-content">
+                        <strong>레시피 매뉴얼:</strong> 주방 습기에 젖지 않도록 두꺼운 아크릴 케이스에 넣어 벽면에 고정<br>
+                        <em>특히 직원6/5가 보는 구이 정량표는 눈높이에 크게 붙이기</em>
+                    </div>
+                </div>
+
+                <div class="guide-item">
+                    <div class="guide-item-number">2</div>
+                    <div class="guide-item-content">
+                        <strong>청소 매뉴얼:</strong> 직원4/5의 행주 관리 및 바닥 청소 수칙은 싱크대 주변에 코팅하여 부착
+                    </div>
+                </div>
+
+                <div class="guide-item">
+                    <div class="guide-item-number">3</div>
+                    <div class="guide-item-content">
+                        <strong>외국어 가이드:</strong> 직원1을 위해 중국어 응대 핵심 멘트나 주요 컴플레인 해결법을 포스 주변에 작게 부착
+                    </div>
+                </div>
+
+                <div class="guide-item">
+                    <div class="guide-item-number">4</div>
+                    <div class="guide-item-content">
+                        <strong>주문 관리:</strong> 직원7의 마감 발주 리스트는 냉장고 문에 자석 게시판 설치하여 누락된 품목을 수시로 기록하게 하기
+                    </div>
+                </div>
+            </div>
+
+            <!-- 인쇄 안내 -->
+            <div class="footer-guide">
+                <h3>🖨️ 인쇄 및 활용 안내</h3>
+                <div class="guide-item">
+                    <div class="guide-item-number">✓</div>
+                    <div class="guide-item-content">
+                        이 문서를 A4 용지에 인쇄하여 각 구역에 부착하면 효율적인 운영이 가능합니다.
+                    </div>
+                </div>
+                <div class="guide-item">
+                    <div class="guide-item-number">✓</div>
+                    <div class="guide-item-content">
+                        습기가 많은 곳은 코팅하거나 아크릴 케이스에 넣어 보호하세요.
+                    </div>
+                </div>
+                <div class="guide-item">
+                    <div class="guide-item-number">✓</div>
+                    <div class="guide-item-content">
+                        각 섹션별로 별도 인쇄하여 해당 구역에만 부착하면 더욱 효과적입니다.
+                    </div>
+                </div>
+                <div class="guide-item">
+                    <div class="guide-item-number">✓</div>
+                    <div class="guide-item-content">
+                        매월 1회 점검하여 내용이 최신인지 확인하고 필요시 업데이트하세요.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

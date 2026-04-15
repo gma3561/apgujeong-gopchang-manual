@@ -1,0 +1,25 @@
+{
+  "options": [
+    {
+      "option_id": "OPT_001",
+      "item_id": "ITEM_001",
+      "option_type": "부위",
+      "option_name": "중간크기",
+      "additional_price": 0,
+      "required": true
+    },
+    {
+      "option_id": "OPT_002",
+      "item_id": "ITEM_001",
+      "option_type": "부위",
+      "option_name": "큰크기",
+      "additional_price": 3000,
+      "required": true
+    }
+  ],
+  "metadata": {
+    "last_updated": "2026-04-15",
+    "total_options": 2,
+    "note": "옵션 타입: 부위, 분량, 추가메뉴 등으로 분류"
+  }
+}

@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>압구정곱창 운영 매뉴얼</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
+            background: #ffffff;
+            padding: 0;
+            line-height: 1.6;
+            color: #37352f;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 40px 80px;
+        }
+        .header {
+            margin-bottom: 40px;
+        }
+        .header h1 {
+            font-size: 2.2em;
+            font-weight: 700;
+            color: #37352f;
+            margin-bottom: 6px;
+            letter-spacing: -0.5px;
+        }
+        .header p {
+            color: #9b9a97;
+            font-size: 0.92em;
+        }
+
+        /* 탭 네비게이션 */
+        .tab-nav {
+            display: flex;
+            flex-wrap: wrap;
+            border-bottom: 1px solid #e9e9e7;
+            margin-bottom: 32px;
+            gap: 2px;
+        }
+        .tab-btn {
+            background: transparent;
+            border: none;
+            padding: 10px 14px;
+            cursor: pointer;
+            font-size: 0.92em;
+            font-weight: 500;
+            color: #787774;
+            border-bottom: 2px solid transparent;
+            transition: all 0.1s;
+            margin-bottom: -1px;
+            font-family: inherit;
+        }
+        .tab-btn:hover {
+            color: #37352f;
+            background: #f7f6f3;
+        }
+        .tab-btn.active {
+            color: #37352f;
+            border-bottom-color: #37352f;
+            font-weight: 600;
+        }
+
+        /* 탭 컨텐츠 */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.15s;
+        }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* 포지션 헤더 */
+        .position-header {
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #e9e9e7;
+        }
+        .position-header .name {
+            font-size: 1.6em;
+            font-weight: 700;
+            color: #37352f;
+            margin-bottom: 4px;
+            letter-spacing: -0.3px;
+        }
+        .position-header .meta {
+            font-size: 0.88em;
+            color: #9b9a97;
+        }
+
+        /* 섹션 */
+        .sub-section {
+            margin-bottom: 32px;
+        }
+        .sub-title {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #37352f;
+            margin-bottom: 14px;
+            letter-spacing: -0.2px;
+        }
+
+        /* Step 블록 (순서) */
+        .step {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 18px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid #f1f1ef;
+        }
+        .step:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .step-number {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            background: #37352f;
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.82em;
+            font-weight: 600;
+        }
+        .step-body {
+            flex: 1;
+        }
+        .step-title {
+            font-weight: 600;
+            color: #37352f;
+            font-size: 1em;
+            margin-bottom: 4px;
+        }
+        .step-time {
+            display: inline-block;
+            font-size: 0.78em;
+            color: #9b9a97;
+            background: #f1f1ef;
+            padding: 2px 8px;
+            border-radius: 3px;
+            margin-left: 8px;
+            font-family: 'SF Mono', 'Monaco', monospace;
+        }
+        .step-desc {
+            color: #787774;
+            font-size: 0.92em;
+            margin-top: 4px;
+            line-height: 1.7;
+        }
+
+        /* 카드 */
+        .task-card {
+            background: #ffffff;
+            border: 1px solid #e9e9e7;
+            border-radius: 4px;
+            padding: 16px 18px;
+            margin-bottom: 10px;
+        }
+        .task-card-title {
+            font-weight: 600;
+            color: #37352f;
+            margin-bottom: 10px;
+            font-size: 0.98em;
+        }
+
+        /* 리스트 */
+        .list {
+            list-style: none;
+            padding: 0;
+        }
+        .list li {
+            padding: 4px 0;
+            padding-left: 16px;
+            position: relative;
+            color: #37352f;
+            font-size: 0.94em;
+            line-height: 1.7;
+        }
+        .list li:before {
+            content: "·";
+            position: absolute;
+            left: 4px;
+            color: #9b9a97;
+            font-weight: bold;
+        }
+        .list strong { font-weight: 600; }
+
+        /* 번호 리스트 */
+        .ordered-list {
+            counter-reset: item;
+            list-style: none;
+            padding: 0;
+        }
+        .ordered-list li {
+            padding: 6px 0 6px 30px;
+            position: relative;
+            color: #37352f;
+            font-size: 0.94em;
+            line-height: 1.7;
+            counter-increment: item;
+        }
+        .ordered-list li:before {
+            content: counter(item);
+            position: absolute;
+            left: 0;
+            top: 6px;
+            width: 22px;
+            height: 22px;
+            background: #f1f1ef;
+            color: #37352f;
+            border-radius: 50%;
+            font-size: 0.78em;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Notion Callout 박스 */
+        .info-box {
+            background: #f1f1ef;
+            padding: 14px 16px;
+            margin: 10px 0;
+            border-radius: 3px;
+            font-size: 0.92em;
+            line-height: 1.7;
+            color: #37352f;
+        }
+        .warning-box {
+            background: #fdecc8;
+            padding: 14px 16px;
+            margin: 10px 0;
+            border-radius: 3px;
+            font-size: 0.92em;
+            line-height: 1.7;
+            color: #37352f;
+        }
+        .tip-box {
+            background: #dbeddb;
+            padding: 14px 16px;
+            margin: 10px 0;
+            border-radius: 3px;
+            font-size: 0.92em;
+            line-height: 1.7;
+            color: #37352f;
+        }
+        .warning-box:before {
+            content: "주의  ";
+            font-weight: 600;
+            color: #cb912f;
+        }
+        .tip-box:before {
+            content: "Tip  ";
+            font-weight: 600;
+            color: #448361;
+        }
+
+        /* 타임라인 */
+        .timeline {
+            background: #f7f6f3;
+            padding: 16px 20px;
+            border-radius: 3px;
+            margin: 10px 0;
+            border: 1px solid #e9e9e7;
+        }
+        .timeline-row {
+            display: flex;
+            gap: 16px;
+            padding: 6px 0;
+            font-size: 0.92em;
+            line-height: 1.6;
+            border-bottom: 1px solid #eceae4;
+        }
+        .timeline-row:last-child { border-bottom: none; }
+        .timeline-time {
+            flex-shrink: 0;
+            width: 70px;
+            color: #787774;
+            font-family: 'SF Mono', 'Monaco', monospace;
+            font-size: 0.88em;
+            font-weight: 600;
+        }
+        .timeline-text {
+            color: #37352f;
+        }
+
+        /* Notion Code Block 스타일 */
+        .timing {
+            background: #f7f6f3;
+            color: #37352f;
+            padding: 14px 18px;
+            border-radius: 3px;
+            font-size: 0.86em;
+            margin: 10px 0;
+            font-family: 'SF Mono', 'Monaco', 'Menlo', 'Courier New', monospace;
+            line-height: 1.9;
+            border: 1px solid #e9e9e7;
+        }
+
+        /* 체크리스트 */
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 8px 4px;
+            border-bottom: 1px solid #f1f1ef;
+        }
+        .checklist-item:last-child { border-bottom: none; }
+        .checklist-item input {
+            margin-right: 12px;
+            margin-top: 3px;
+            cursor: pointer;
+            width: 16px;
+            height: 16px;
+            accent-color: #37352f;
+        }
+        .checklist-item label {
+            cursor: pointer;
+            font-size: 0.94em;
+            flex: 1;
+            color: #37352f;
+        }
+        .checklist-item input:checked + label {
+            color: #9b9a97;
+            text-decoration: line-through;
+        }
+
+        /* Phase 구분 (하루 단계) */
+        .phase {
+            background: #f7f6f3;
+            padding: 6px 14px;
+            border-radius: 3px;
+            font-size: 0.82em;
+            font-weight: 600;
+            color: #787774;
+            display: inline-block;
+            margin-bottom: 12px;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+        }
+
+        /* 반응형 */
+        @media (max-width: 768px) {
+            .container { padding: 40px 20px 60px; }
+            .header h1 { font-size: 1.8em; }
+            .tab-btn { padding: 10px 10px; font-size: 0.88em; }
+            .position-header .name { font-size: 1.4em; }
+            .timeline-time { width: 60px; font-size: 0.82em; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>압구정곱창 운영 매뉴얼</h1>
+        <p>포지션별 업무 순서 가이드</p>
+    </div>
+
+    <!-- 탭 네비게이션 -->
+    <div class="tab-nav">
+        <button class="tab-btn active" onclick="showTab(event, 'open')">오픈 준비</button>
+        <button class="tab-btn" onclick="showTab(event, 'meat')">고기</button>
+        <button class="tab-btn" onclick="showTab(event, 'veggie')">야채 · 전골</button>
+        <button class="tab-btn" onclick="showTab(event, 'sauce')">소스 · 정리</button>
+        <button class="tab-btn" onclick="showTab(event, 'hall')">홀 서빙</button>
+        <button class="tab-btn" onclick="showTab(event, 'manager')">매니저</button>
+        <button class="tab-btn" onclick="showTab(event, 'close')">마감</button>
+    </div>
+
+    <!-- 오픈 준비 -->
+    <div id="open" class="tab-content active">
+        <div class="position-header">
+            <div class="name">오픈 전 준비</div>
+            <div class="meta">담당: 전체 직원 · 영업 시작 전 필수 사항</div>
+        </div>
+
+        <div class="sub-section">
+            <div class="sub-title">하루 일과 타임라인</div>
+            <div class="timeline">
+                <div class="timeline-row"><div class="timeline-time">09:30</div><div class="timeline-text">주방 직원 출근 (봉녀, 옥화, 순덕, 주연)</div></div>
+                <div class="timeline-row"><div class="timeline-time">09:35</div><div class="timeline-text">유니폼 착용, 손 씻기, 위생 확인</div></div>
+                <div class="timeline-row"><div class="timeline-time">09:40</div><div class="timeline-text">육수 불 올리기 (옥화 — 최우선)</div></div>
+                <div class="timeline-row"><div class="timeline-time">09:45</div><div class="timeline-text">고기 숙성고 확인 및 꺼내기 (봉녀)</div></div>
+                <div class="timeline-row"><div class="timeline-time">10:00</div><div class="timeline-text">야채 다듬기 시작 (옥화, 순덕)</div></div>
+                <div class="timeline-row"><div class="timeline-time">10:00</div><div class="timeline-text">바닥 정리 및 테이블 세팅 (주연)</div></div>
+                <div class="timeline-row"><div class="timeline-time">10:30</div><div class="timeline-text">부추 세척 (옥화)</div></div>
+                <div class="timeline-row"><div class="timeline-time">11:00</div><div class="timeline-text">소스 제조 시작 (주연 — 60개 이상)</div></div>
+                <div class="timeline-row"><div class="timeline-time">11:30</div><div class="timeline-text">매니저 출근, 일일현황 입력 (은영)</div></div>
+                <div class="timeline-row"><div class="timeline-time">11:45</div><div class="timeline-text">홀 직원 출근, 부탄가스 세팅 (경희, 성옥)</div></div>
+                <div class="timeline-row"><div class="timeline-time">11:55</div><div class="timeline-text">전 직원 브리핑 — 예약 · 체험단 공유</div></div>
+                <div class="timeline-row"><div class="timeline-time">12:00</div><div class="timeline-text">오픈</div></div>
+            </div>
+        </div>
+
+        <div class="sub-section">
+            <div class="sub-title">오픈 순서 (전체 공통)</div>
+
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-body">
+                    <div class="step-title">출근 및 위생 <span class="step-time">09:30 ~ 09:40</span></div>
+                    <ul class="list">
+                        <li>유니폼 착용 (앞치마 · 모자)</li>
+                        <li>손 씻기 (30초 이상)</li>
+                        <li>개인 위생 확인 (손톱, 머리카락)</li>
+                        <li>출근 체크</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-body">
+                    <div class="step-title">매장 환경 세팅 <span class="step-time">09:40 ~ 10:00</span></div>
+                    <ul class="list">
+                        <li>에어컨 및 환풍기 가동</li>
+                        <li>조명 켜기</li>
+                        <li>테이블 · 의자 정렬</li>
+                        <li>포스 전원 ON</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-body">
+                    <div class="step-title">재료 준비 (포지션별 병행) <span class="step-time">10:00 ~ 11:30</span></div>
+                    <ul class="list">
+                        <li>주방: 고기 · 야채 · 육수 · 계란찜 준비</li>
+                        <li>홀: 테이블 세팅 · 소스 제조 · 부탄가스 충전</li>
+                        <li>매니저: 일일현황 입력 · 예약 확인</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-body">
+                    <div class="step-title">오픈 전 최종 점검 <span class="step-time">11:50 ~ 11:58</span></div>
+                    <ul class="list">
+                        <li>소스 60개 이상 확인</li>
+                        <li>고기 정렬 완료 확인</li>
+                        <li>부추무침 · 가니쉬 준비 확인</li>
+                        <li>전 직원 브리핑</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="sub-section">
+            <div class="sub-title">오픈 체크리스트</div>
+            <div class="checklist-item"><input type="checkbox" id="o1"><label for="o1">유니폼 착용 및 손 씻기</label></div>
+            <div class="checklist-item"><input type="checkbox" id="o2"><label for="o2">부탄가스 충전 (비닐 제거)</label></div>
+            <div class="checklist-item"><input type="checkbox" id="o3"><label for="o3">테이블 및 의자 정렬</label></div>
+            <div class="checklist-item"><input type="checkbox" id="o4"><label for="o4">냅킨 및 물티슈 채우기</label></div>
+            <div class="checklist-item"><input type="checkbox" id="o5"><label for="o5">컵 세트 확인</label></div>
+            <div class="checklist-item"><input type="checkbox" id="o6"><label for="o6">소스 60개 이상 준비</label></div>
+            <div class="checklist-item"><input type="checkbox" id="o7"><label for="o7">야채 정렬 확인</label></div>
+            <div class="checklist-item"><input type="checkbox" id="o8"><label for="o8">육수 불 올리기</label></div>
+            <div class="checklist-item"><input type="checkbox" id="o9"><label for="o9">고기 정렬 완료</label></div>
+            <div class="checklist-item"><input type="checkbox" id="o10"><label for="o10">포스 전원 ON</label></div>
+            <div class="checklist-item"><input type="checkbox" id="o11"><label for="o11">에어컨 및 환풍기 가동</label></div>
+            <div class="checklist-item"><input type="checkbox" id="o12"><label for="o12">예약 확인 및 자리 세팅</label></div>
+            <div class="checklist-item"><input type="checkbox" id="o13"><label for="o13">전 직원 브리핑 완료</label></div>
+        </div>
+    </div>
+
+    <!-- 고기 -->
+    <div id="meat" class="tab-content">
+        <div class="position-header">
+            <div class="name">고기 담당</div>
+            <div class="meta">담당: 봉녀 · 오전 준비 ~ 마감</div>
+        </div>
+
+        <div class="sub-section">
+            <div class="phase">아침 준비</div>
+            <div class="sub-title">업무 순서</div>
+
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-body">
+                    <div class="step-title">숙성고 확인 <span class="step-time">09:30</span></div>
+                    <div class="step-desc">어제 남은 고기 상태 확인 · 냄새 · 색깔 · 질감 점검. 이상 있으면 매니저에게 즉시 보고.</div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-body">
+                    <div class="step-title">일일 분량 계산 <span class="step-time">09:35</span></div>
+                    <div class="info-box">
+                        <strong>평일 (4-5봉)</strong> &nbsp; 곱창 8-10kg &nbsp; 대창 4-5kg &nbsp; 막창 2-3kg<br>
+                        <strong>주말 (6-7봉)</strong> &nbsp; 곱창 12-14kg &nbsp; 대창 6-8kg &nbsp; 막창 4-5kg
+                    </div>
+                    <div class="step-desc">예약 수 + 평균 주문량 기반으로 분량 결정. 부족하면 즉시 매니저에게 추가 발주 요청.</div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-body">
+                    <div class="step-title">곱창 정렬 <span class="step-time">09:45</span></div>
+                    <ol class="ordered-list">
+                        <li>숙성고에서 꺼내 작업대 이동</li>
+                        <li>기름 및 못난이 부분 제거</li>
+                        <li>5cm 간격으로 절단</li>
+                        <li>쟁반에 편으로 나열 (겹치지 않게)</li>
+                        <li>숙성고에 다시 보관 (서빙 직전까지)</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-body">
+                    <div class="step-title">대창 정렬 <span class="step-time">10:00</span></div>
+                    <ol class="ordered-list">
+                        <li>기름 제거 (두껍지 않게, 맛있는 기름은 남기기)</li>
+                        <li>5cm 간격으로 절단</li>
+                        <li>1/2 바트에 키친타올 깔기</li>
+                        <li>대창 올리기 (수분 흡수용)</li>
+                        <li>냉장고 보관</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-body">
+                    <div class="step-title">막창 정렬 <span class="step-time">10:15</span></div>
+                    <ol class="ordered-list">
+                        <li>편으로 얇게 슬라이싱</li>
+                        <li>1/2 바트에 키친타올 깔기</li>
+                        <li>막창 올리기</li>
+                        <li>냉장고 보관</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">6</div>
+                <div class="step-body">
+                    <div class="step-title">양 (갈비) 정렬 <span class="step-time">10:30</span></div>
+                    <ol class="ordered-list">
+                        <li>진공포장 개봉</li>
+                        <li>키친타올로 수분 꼼꼼히 제거</li>
+                        <li>쟁반에 나열</li>
+                        <li>냉장고 보관</li>
+                    </ol>
+                    <div class="warning-box">양은 수분이 남아있으면 구울 때 튀고 질겨짐 — 수분 제거 필수</div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">7</div>
+                <div class="step-body">
+                    <div class="step-title">불판 및 도구 세팅 <span class="step-time">10:45</span></div>
+                    <ul class="list">
+                        <li>불판 청소 (탄 기름 제거)</li>
+                        <li>테스트 가열 (온도 확인)</li>
+                        <li>집게 · 가위 · 트레이 세팅</li>
+                        <li>양념통 채우기 (마늘가루 · 다시다 · 후추)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="sub-section">
+            <div class="phase">영업 중</div>
+            <div class="sub-title">1인분 조리 타임라인 (120초)</div>
+
+            <div class="task-card">
+                <div class="timing">
+0초    주문 받기<br>
+5초    불판 온도 확인 (중불)<br>
+10초   곱창 · 대창 · 막창 올리기<br>
+30초   마늘가루 + 다시다 뿌리기<br>
+45초   막창 · 양에 후추 뿌리기<br>
+60초   1차 뒤집기 (끝이 말려보일 때)<br>
+90초   양념 재분사 (필요시)<br>
+100초  2차 뒤집기<br>
+110초  가니쉬 올리기<br>
+120초  소스 설명 후 제공
+                </div>
+
+                <div class="task-card-title" style="margin-top:14px;">가니쉬 구성 (1인분)</div>
+                <ul class="list">
+                    <li>부추무침 100-120g</li>
+                    <li>양파 50g · 대파 50g</li>
+                    <li>호박 30g · 감자 2조각 (60g, 데친 것)</li>
+                    <li>새송이 30g (0.5cm 슬라이싱) · 떡 4개</li>
+                </ul>
+
+                <div class="warning-box">너무 빠른 뒤집기 금지 · 강불 금지 (탈 위험) · 양념 생략 금지</div>
+                <div class="tip-box">아래쪽이 갈색으로 변하면 뒤집기 — 눈으로 판단</div>
+            </div>
+        </div>
+
+        <div class="sub-section">
+            <div class="phase">피크타임 대응</div>
+            <div class="sub-title">복수 주문 처리 순서</div>
+            <ol class="ordered-list">
+                <li>주문 접수 순서대로 정렬 (번호표 또는 테이블번호)</li>
+                <li>동일 부위는 동시 조리 (효율 극대화)</li>
+                <li>구워지는 타이밍에 따라 트레이 분배</li>
+                <li>먼저 완성된 테이블부터 서빙</li>
+                <li>다음 주문 대기 재료 확인 (재고 부족 시 주방 공유)</li>
+            </ol>
+            <div class="tip-box">피크타임에는 불판 3-4개 동시 운영 — 온도 편차 주의</div>
+        </div>
+
+        <div class="sub-section">
+            <div class="phase">마감</div>
+            <div class="sub-title">마감 순서</div>
+            <ol class="ordered-list">
+                <li>라스트 오더 확인 (매니저 공유)</li>
+                <li>남은 고기 정리 (사용 가능 vs 폐기)</li>
+                <li>불판 및 도구 세척</li>
+                <li>숙성고 내부 정리</li>
+                <li>내일 발주 수량 기록</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- 야채/전골 -->
+    <div id="veggie" class="tab-content">
+        <div class="position-header">
+            <div class="name">야채 · 전골 담당</div>
+            <div class="meta">담당: 옥화 (메인), 순덕 (보조) · 오전 ~ 마감</div>
+        </div>
+
+        <div class="sub-section">
+            <div class="phase">아침 준비 — 순서 엄수</div>
+            <div class="sub-title">업무 순서</div>
+
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-body">
+                    <div class="step-title">육수 불 올리기 <span class="step-time">09:40</span></div>
+                    <div class="warning-box">가장 먼저 해야 하는 일. 육수는 시간이 많이 걸리므로 도착 즉시 시작</div>
+                    <ol class="ordered-list">
+                        <li>큰 솥에 물 붓기</li>
+                        <li>멸치 · 디포리 · 소금 투입</li>
+                        <li>강불로 끓이기</li>
+                        <li>끓으면 한소끔 식혀두기</li>
+                        <li>전골용 · 계란찜용 분리 보관</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-body">
+                    <div class="step-title">부추 세척 <span class="step-time">10:00 ~ 10:40</span></div>
+                    <div class="info-box">평일 15-20단 · 금요일 30단</div>
+                    <ol class="ordered-list">
+                        <li>부추 단별로 분리</li>
+                        <li>4cm 간격으로 자르기</li>
+                        <li>큰 대야에 1차 세척 (흙 털어내기)</li>
+                        <li>물 갈아 2차 세척</li>
+                        <li>물 갈아 3차 세척 (깨끗할 때까지)</li>
+                        <li>타공채반에 올려 물기 제거 (15분 이상)</li>
+                        <li>부추 양념에 버무리기 (구이 가니쉬용)</li>
+                    </ol>
+                    <div class="warning-box">물기가 남으면 양념이 물러짐 · 충분히 털기</div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-body">
+                    <div class="step-title">야채 다듬기 <span class="step-time">10:40 ~ 11:20</span></div>
+                    <ul class="list">
+                        <li><strong>양파</strong> &nbsp; 구이용 2-3cm 큐브 · 전골용 잘게</li>
+                        <li><strong>대파</strong> &nbsp; 4cm 길이</li>
+                        <li><strong>감자</strong> &nbsp; 껍질 제거 → 끓는 물에 데치기 → 2조각 약 60g</li>
+                        <li><strong>새송이</strong> &nbsp; 0.5cm 간격 슬라이싱</li>
+                        <li><strong>호박</strong> &nbsp; 1cm 간격 절단</li>
+                        <li><strong>청양고추 · 배추 · 깻잎 · 팽이버섯</strong> &nbsp; 전골용 준비</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-body">
+                    <div class="step-title">계란물 준비 <span class="step-time">11:20</span></div>
+                    <ol class="ordered-list">
+                        <li>계란 깨서 볼에 넣기</li>
+                        <li>물 + 맛소금 추가</li>
+                        <li>홍두깨 그라인더로 곱게 갈기</li>
+                        <li>체에 걸러 덩어리 제거</li>
+                        <li>뚜껑 있는 통에 보관 (냉장)</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-body">
+                    <div class="step-title">명이나물 · 반찬 통 확인 <span class="step-time">11:40</span></div>
+                    <div class="step-desc">명이나물 통 채우기 (비워졌으면). 기타 반찬 재고 확인.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sub-section">
+            <div class="phase">영업 중 — 전골 조리</div>
+            <div class="sub-title">전골 주문 처리 순서</div>
+
+            <div class="task-card">
+                <div class="task-card-title">사이즈별 분량</div>
+                <div class="info-box">
+                    <strong>소</strong> &nbsp; 곱창 140g + 양 30g<br>
+                    <strong>중</strong> &nbsp; 곱창 220g + 양 40g
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-body">
+                    <div class="step-title">주문 접수 및 재료 계량</div>
+                    <div class="step-desc">사이즈 확인 후 곱창 · 양 정확히 계량. 1인분 기준 준수.</div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-body">
+                    <div class="step-title">육수 담기</div>
+                    <div class="step-desc">전골 냄비에 준비된 육수 담기. 사이즈별 용량 차이 주의.</div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-body">
+                    <div class="step-title">고기 투입 및 초기 조리</div>
+                    <div class="step-desc">곱창 + 양을 육수에 넣고 끓이기 시작. 익을 때까지 대기.</div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-body">
+                    <div class="step-title">야채 추가</div>
+                    <ul class="list">
+                        <li>호박 (1cm) · 청양고추 · 배추 · 양파</li>
+                        <li>떡국떡 · 두부 · 당면 · 대파</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-body">
+                    <div class="step-title">마무리 (한소끔 끓인 후)</div>
+                    <div class="timing">
+1) 깻잎 올리기<br>
+2) 팽이버섯 올리기<br>
+3) 부추 올리기 (마지막)<br>
+4) 들깨가루 1스푼
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sub-section">
+            <div class="phase">영업 중 — 계란찜 조리</div>
+            <div class="sub-title">1인분 · 1호 뚝배기 · 100초</div>
+            <div class="task-card">
+                <div class="timing">
+0초    뚝배기에 계란물 1.5국자 + 육수 1국자<br>
+5초    강불에서 올리기<br>
+30초   옆부분 익으면 약불 + 뚜껑<br>
+60초   속까지 익도록 관찰<br>
+90초   연기 나면 불 끄기<br>
+100초  삼바리에 받쳐 제공
+                </div>
+                <div class="warning-box">강불로 끝까지 두면 기포 발생 · 약불 전환 타이밍 중요</div>
+                <div class="tip-box">뚝배기 옆부분이 노랗게 익는 순간이 약불 전환 신호</div>
+            </div>
+        </div>
+
+        <div class="sub-section">
+            <div class="phase">마감</div>
+            <div class="sub-title">마감 순서</div>
+            <ol class="ordered-list">
+                <li>남은 육수 처리 (사용 가능 분량만 냉장)</li>
+                <li>야채 정리 (신선도 유지 가능 분량만 보관)</li>
+                <li>전골 냄비 · 뚝배기 세척</li>
+                <li>작업대 청소</li>
+                <li>내일 필요 야채 리스트 작성</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- 소스/정리 -->
+    <div id="sauce" class="tab-content">
+        <div class="position-header">
+            <div class="name">소스 · 정리 담당</div>
+            <div class="meta">담당: 주연 · 오전 ~ 마감</div>
+        </div>
+
+        <div class="sub-section">
+            <div class="phase">아침 준비</div>
+            <div class="sub-title">업무 순서</div>
+
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-body">
+                    <div class="step-title">바닥 정리 <span class="step-time">09:30</span></div>
+                    <div class="step-desc">가장 먼저 할 일. 홀 바닥 쓸기 · 걸레질. 테이블 세팅 전에 완료.</div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-body">
+                    <div class="step-title">테이블 세팅 <span class="step-time">09:50</span></div>
+                    <ol class="ordered-list">
+                        <li>테이블 위 먼지 닦기</li>
+                        <li>자리별 컵 세팅</li>
+                        <li>수저통 확인</li>
+                        <li>양념통 정리</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-body">
+                    <div class="step-title">헹주 정리 <span class="step-time">10:20</span></div>
+                    <div class="step-desc">삶아진 헹주 꺼내 정리. 테이블별 배치 준비.</div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-body">
+                    <div class="step-title">반찬 통 채우기 <span class="step-time">10:30</span></div>
+                    <ul class="list">
+                        <li>깍두기</li>
+                        <li>당근</li>
+                        <li>오이고추</li>
+                    </ul>
+                    <div class="tip-box">통 80% 이상 채우기 · 부족하면 즉시 리필</div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-body">
+                    <div class="step-title">간마늘 · 간깍두기 제조 <span class="step-time">10:45</span></div>
+                    <div class="step-desc">떨어졌으면 즉시 제조. 간마늘은 분쇄 후 보관, 간깍두기는 다져서 용기에.</div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">6</div>
+                <div class="step-body">
+                    <div class="step-title">날치알 해동 <span class="step-time">11:00</span></div>
+                    <ol class="ordered-list">
+                        <li>냉동 날치알 꺼내기</li>
+                        <li>상온 해동 (30분)</li>
+                        <li>물기 짜기 (과하지 않게)</li>
+                        <li>용기 담아 냉장 보관</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">7</div>
+                <div class="step-body">
+                    <div class="step-title">소스 제조 <span class="step-time">11:00 ~ 11:50</span></div>
+                    <div class="info-box">
+                        <strong>간장청양마늘소스</strong> &nbsp; 한 판 10개씩 · 총 60개 이상 (주말 80+)<br>
+                        간장 절반 + 마늘 1티스푼 + 청양고추 반스푼
+                    </div>
+                    <div class="info-box">
+                        <strong>소금장</strong> &nbsp; 참기름 1스푼 + 구운후추소금 1티스푼
+                    </div>
+                    <div class="info-box">
+                        <strong>대창소스</strong> &nbsp; 종지 1스푼 (대창 담금용)
+                    </div>
+                    <div class="warning-box">위생: 손목 위로 준비 · 음식과 직접 닿지 않도록</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sub-section">
+            <div class="phase">영업 중</div>
+            <div class="sub-title">손님상 올리는 순서</div>
+            <ol class="ordered-list">
+                <li>매니저 · 홀 직원으로부터 주문 확인</li>
+                <li>상 위 기본 반찬 세팅 (깍두기 · 당근 · 오이고추)</li>
+                <li>소스 종지 배치 (주문 부위별)</li>
+                <li>상 들고 테이블로 이동</li>
+                <li>테이블에 놓고 간단히 안내</li>
+            </ol>
+
+            <div class="sub-title" style="margin-top:24px;">지속 모니터링</div>
+            <ul class="list">
+                <li>테이블별 소스 부족 여부 확인 (30분마다 순찰)</li>
+                <li>반찬 통 · 소스 리필</li>
+                <li>포스 보조 (피크 시)</li>
+            </ul>
+        </div>
+
+        <div class="sub-section">
+            <div class="phase">마감</div>
+            <div class="sub-title">마감 순서</div>
+            <ol class="ordered-list">
+                <li>남은 소스 처리 (당일 제조분은 폐기 또는 전용 냉장)</li>
+                <li>소스 종지 세척</li>
+                <li>반찬 통 정리 및 냉장 보관</li>
+                <li>헹주 세탁기 돌리기</li>
+                <li>포스 정산 보조</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- 홀 서빙 -->
+    <div id="hall" class="tab-content">
+        <div class="position-header">
+            <div class="name">홀 서빙 · 고객 응대</div>
+            <div class="meta">담당: 경희 (한국 손님), 성옥 (중국 손님) · 영업 중</div>
+        </div>
+
+        <div class="sub-section">
+            <div class="phase">아침 준비</div>
+            <div class="sub-title">업무 순서</div>
+
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-body">
+                    <div class="step-title">부탄가스 세팅 <span class="step-time">11:45</span></div>
+                    <ol class="ordered-list">
+                        <li>새 부탄가스 박스 꺼내기</li>
+                        <li>비닐 벗기기</li>
+                        <li>테이블 옆 수납공간에 채우기</li>
+                        <li>기존 재고 확인</li>
+                    </ol>
+                    <div class="warning-box">부탄가스는 직사광선 및 고온 피하기</div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-body">
+                    <div class="step-title">냅킨 · 물티슈 충전 <span class="step-time">11:50</span></div>
+                    <div class="step-desc">테이블별 냅킨통 · 물티슈 확인 후 채우기.</div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-body">
+                    <div class="step-title">브리핑 참여 <span class="step-time">11:55</span></div>
+                    <div class="step-desc">매니저로부터 당일 예약 · 체험단 · 특이사항 공유.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sub-section">
+            <div class="phase">영업 중</div>
+            <div class="sub-title">고객 응대 표준 순서</div>
+
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-body">
+                    <div class="step-title">손님 맞이</div>
+                    <div class="step-desc">입구에서 인사 · 인원 확인 · 자리 안내 (예약 여부 확인).</div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-body">
+                    <div class="step-title">기본 세팅</div>
+                    <ol class="ordered-list">
+                        <li>물 제공</li>
+                        <li>수저 · 냅킨 배치</li>
+                        <li>메뉴판 제공</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-body">
+                    <div class="step-title">주문 수령</div>
+                    <div class="step-desc">메뉴 추천 · 인원수 기반 양 조절 · 소스 요청 확인. 포스에 즉시 입력.</div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-body">
+                    <div class="step-title">고기 서빙 시 소스 설명</div>
+                    <div class="info-box">
+                        <strong>대창 · 막창</strong> &nbsp; 소금장<br>
+                        <strong>곱창</strong> &nbsp; 간장청양마늘소스<br>
+                        <strong>양</strong> &nbsp; 소금장 또는 기본
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-body">
+                    <div class="step-title">중간 체크</div>
+                    <ul class="list">
+                        <li>반찬 부족 여부 확인</li>
+                        <li>물 · 주류 리필</li>
+                        <li>고기 더 필요한지 추가 주문 확인</li>
+                        <li>볶음밥 주문 타이밍 체크</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">6</div>
+                <div class="step-body">
+                    <div class="step-title">퇴실 및 테이블 정리</div>
+                    <ol class="ordered-list">
+                        <li>계산 후 인사</li>
+                        <li>상 정리 (신속하게)</li>
+                        <li>테이블 닦기</li>
+                        <li>다음 손님 세팅 준비</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="sub-section">
+            <div class="sub-title">담당별 포인트</div>
+            <div class="task-card">
+                <div class="tip-box">
+                    <strong>경희 (한국 손님)</strong> &nbsp; 친근한 응대, 빠른 주문 처리<br>
+                    <strong>성옥 (중국 손님)</strong> &nbsp; 영어 · 중국어 소스 설명, 세심한 배려
+                </div>
+            </div>
+        </div>
+
+        <div class="sub-section">
+            <div class="phase">마감</div>
+            <div class="sub-title">마감 순서</div>
+            <ol class="ordered-list">
+                <li>라스트 오더 안내 (매니저 지시)</li>
+                <li>추가 주문 마감 처리</li>
+                <li>맥주 채우기 (경희)</li>
+                <li>소주 채우기 (성옥)</li>
+                <li>냅킨 · 물티슈 재충전</li>
+                <li>테이블 정리 및 닦기</li>
+                <li>전체 마감 정리 (성옥 총괄)</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- 매니저 -->
+    <div id="manager" class="tab-content">
+        <div class="position-header">
+            <div class="name">매니저 (FOH)</div>
+            <div class="meta">담당: 은영 · 오후 ~ 마감</div>
+        </div>
+
+        <div class="sub-section">
+            <div class="phase">출근 후</div>
+            <div class="sub-title">업무 순서</div>
+
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-body">
+                    <div class="step-title">일일 현황 정리 <span class="step-time">11:30</span></div>
+                    <ol class="ordered-list">
+                        <li>어제 매출 확인</li>
+                        <li>시스템에 매출 입력</li>
+                        <li>특이사항 메모 (클레임 · 이벤트 · 결제 오류)</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-body">
+                    <div class="step-title">직원 출퇴근 체크 <span class="step-time">11:40</span></div>
+                    <div class="step-desc">출근자 확인 · 지각 · 결근 기록. 포지션 커버 계획 수립.</div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-body">
+                    <div class="step-title">당일 예약 확인 <span class="step-time">11:45</span></div>
+                    <ul class="list">
+                        <li>예약 인원 · 시간 · 자리 번호 확인</li>
+                        <li>체험단 여부 확인</li>
+                        <li>VIP · 단골 손님 체크</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-body">
+                    <div class="step-title">자리 사전 세팅 <span class="step-time">11:50</span></div>
+                    <div class="step-desc">예약에 따라 좌석 배치 · 이름표 또는 예약 표시.</div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-body">
+                    <div class="step-title">전 직원 브리핑 <span class="step-time">11:55</span></div>
+                    <ul class="list">
+                        <li>당일 예약 공유</li>
+                        <li>체험단 · VIP 공유</li>
+                        <li>특이사항 전달 (메뉴 품절 · 재료 주의)</li>
+                        <li>목표 매출 · 회전율 안내</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="sub-section">
+            <div class="phase">영업 중</div>
+            <div class="sub-title">고객 데이터 기록 순서</div>
+            <div class="task-card">
+                <div class="info-box">
+                    <strong>기록 포맷</strong><br>
+                    날짜 | 시간 | 국가 | 인원 | 방문경로 | 자리번호
+                </div>
+                <ol class="ordered-list">
+                    <li>손님 입장 시 즉시 기록 시작</li>
+                    <li>인원 · 국가 확인 (외모 · 언어 기반)</li>
+                    <li>방문경로 문의 (신규 · 재방문 · 여행객)</li>
+                    <li>자리 번호 매칭</li>
+                    <li>시스템 또는 노트에 기입</li>
+                </ol>
+                <div class="task-card-title" style="margin-top:12px;">예시</div>
+                <div class="timing">
+2026-04-15 | 18:30 | 한국 | 3 | 재방문 | #2<br>
+2026-04-15 | 19:00 | 중국 | 4 | 여행객 | #5<br>
+2026-04-15 | 20:15 | 한국 | 2 | 신규 | #3
+                </div>
+                <div class="warning-box">모든 방문 고객 기록 필수 (마케팅 및 통계용)</div>
+            </div>
+        </div>
+
+        <div class="sub-section">
+            <div class="sub-title">영업 중 순환 업무 (30분 주기)</div>
+            <ol class="ordered-list">
+                <li>매장 순찰 (소스 · 온도 · 청결)</li>
+                <li>테이블별 만족도 파악</li>
+                <li>포스 정산 상태 확인</li>
+                <li>직원 부담 분산 (홀 서빙 보조)</li>
+                <li>특수 주문 대응 (볶음밥 타이밍 · 고기 잘라주기)</li>
+            </ol>
+        </div>
+
+        <div class="sub-section">
+            <div class="phase">마감</div>
+            <div class="sub-title">마감 순서</div>
+            <ol class="ordered-list">
+                <li>라스트 오더 시간 공지 (전 직원 공유)</li>
+                <li>마지막 주문 받기 마감</li>
+                <li>수저 세트 닦기</li>
+                <li>포스 최종 정산</li>
+                <li>현금 · 카드 매출 대조</li>
+                <li>당일 매출 기록 및 익일 체크사항 메모</li>
+                <li>직원 퇴근 확인</li>
+                <li>내일 예약 · 체험단 미리 확인</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- 마감 -->
+    <div id="close" class="tab-content">
+        <div class="position-header">
+            <div class="name">마감</div>
+            <div class="meta">담당: 전체 직원 · 마감 시간 이후</div>
+        </div>
+
+        <div class="sub-section">
+            <div class="sub-title">마감 타임라인</div>
+            <div class="timeline">
+                <div class="timeline-row"><div class="timeline-time">22:00</div><div class="timeline-text">라스트 오더 안내 (매니저)</div></div>
+                <div class="timeline-row"><div class="timeline-time">22:30</div><div class="timeline-text">주문 마감 · 마지막 조리</div></div>
+                <div class="timeline-row"><div class="timeline-time">23:00</div><div class="timeline-text">마지막 손님 배웅</div></div>
+                <div class="timeline-row"><div class="timeline-time">23:05</div><div class="timeline-text">테이블 정리 시작</div></div>
+                <div class="timeline-row"><div class="timeline-time">23:15</div><div class="timeline-text">주방 정리 (봉녀 · 옥화 · 주연)</div></div>
+                <div class="timeline-row"><div class="timeline-time">23:30</div><div class="timeline-text">바닥 청소 · 화장실 확인</div></div>
+                <div class="timeline-row"><div class="timeline-time">23:40</div><div class="timeline-text">포스 정산 (은영)</div></div>
+                <div class="timeline-row"><div class="timeline-time">23:50</div><div class="timeline-text">내일 발주 확인</div></div>
+                <div class="timeline-row"><div class="timeline-time">24:00</div><div class="timeline-text">불 끄기 · 문 잠금 · 퇴근</div></div>
+            </div>
+        </div>
+
+        <div class="sub-section">
+            <div class="sub-title">마감 순서 (포지션별)</div>
+
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-body">
+                    <div class="step-title">봉녀 (고기)</div>
+                    <ul class="list">
+                        <li>남은 고기 분류 (재사용 vs 폐기)</li>
+                        <li>불판 및 도구 세척</li>
+                        <li>숙성고 내부 정리</li>
+                        <li>내일 발주 수량 기록</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-body">
+                    <div class="step-title">옥화 (야채 · 전골)</div>
+                    <ul class="list">
+                        <li>육수 · 야채 냉장 보관</li>
+                        <li>전골 냄비 · 뚝배기 세척</li>
+                        <li>작업대 청소</li>
+                        <li>내일 야채 리스트 작성</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-body">
+                    <div class="step-title">주연 (소스 · 정리)</div>
+                    <ul class="list">
+                        <li>소스 종지 세척</li>
+                        <li>반찬 통 정리 및 보관</li>
+                        <li>헹주 세탁</li>
+                        <li>포스 정산 보조</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-body">
+                    <div class="step-title">경희 · 성옥 (홀)</div>
+                    <ul class="list">
+                        <li>맥주 · 소주 재고 채우기</li>
+                        <li>냅킨 · 물티슈 재충전</li>
+                        <li>테이블 닦기 · 의자 수납</li>
+                        <li>전체 마감 총괄 (성옥)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-body">
+                    <div class="step-title">은영 (매니저)</div>
+                    <ul class="list">
+                        <li>수저 세트 닦기</li>
+                        <li>포스 최종 정산</li>
+                        <li>매출 기록 및 특이사항 메모</li>
+                        <li>내일 예약 확인</li>
+                        <li>직원 퇴근 확인</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="sub-section">
+            <div class="sub-title">최종 마감 체크리스트</div>
+            <div class="checklist-item"><input type="checkbox" id="c1"><label for="c1">마지막 손님 배웅</label></div>
+            <div class="checklist-item"><input type="checkbox" id="c2"><label for="c2">테이블 정렬</label></div>
+            <div class="checklist-item"><input type="checkbox" id="c3"><label for="c3">의자 수납</label></div>
+            <div class="checklist-item"><input type="checkbox" id="c4"><label for="c4">부탄가스 점검</label></div>
+            <div class="checklist-item"><input type="checkbox" id="c5"><label for="c5">냅킨 및 물티슈 정리</label></div>
+            <div class="checklist-item"><input type="checkbox" id="c6"><label for="c6">반찬 통 정리</label></div>
+            <div class="checklist-item"><input type="checkbox" id="c7"><label for="c7">주방 정리 (봉녀)</label></div>
+            <div class="checklist-item"><input type="checkbox" id="c8"><label for="c8">육수 및 야채 정리 (옥화)</label></div>
+            <div class="checklist-item"><input type="checkbox" id="c9"><label for="c9">소스 및 기구 정리 (주연)</label></div>
+            <div class="checklist-item"><input type="checkbox" id="c10"><label for="c10">바닥 청소</label></div>
+            <div class="checklist-item"><input type="checkbox" id="c11"><label for="c11">화장실 확인</label></div>
+            <div class="checklist-item"><input type="checkbox" id="c12"><label for="c12">쓰레기 처리</label></div>
+            <div class="checklist-item"><input type="checkbox" id="c13"><label for="c13">포스 정산 및 정리</label></div>
+            <div class="checklist-item"><input type="checkbox" id="c14"><label for="c14">에어컨 및 환풍기 종료</label></div>
+            <div class="checklist-item"><input type="checkbox" id="c15"><label for="c15">불 끄기</label></div>
+            <div class="checklist-item"><input type="checkbox" id="c16"><label for="c16">문 잠금</label></div>
+            <div class="checklist-item"><input type="checkbox" id="c17"><label for="c17">내일 발주 확인</label></div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+function showTab(event, tabId) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(tabId).classList.add('active');
+    event.currentTarget.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>

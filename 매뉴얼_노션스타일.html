@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>압구정곱창 운영 매뉴얼</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
+            background: #f5f5f5;
+            padding: 30px 15px;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+        }
+
+        /* 헤더 */
+        .header {
+            background: white;
+            padding: 35px 40px;
+            border-bottom: 1px solid #e5e5e5;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 1.8em;
+            color: #2d2d2d;
+            margin-bottom: 6px;
+            font-weight: 700;
+        }
+
+        .header p {
+            color: #999;
+            font-size: 0.9em;
+        }
+
+        /* 컨텐츠 */
+        .content {
+            padding: 35px 40px;
+        }
+
+        /* 섹션 */
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #2d2d2d;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e5e5e5;
+        }
+
+        /* 카드 */
+        .card {
+            background: #f9f9f9;
+            border: 1px solid #e5e5e5;
+            border-radius: 6px;
+            padding: 16px 18px;
+            margin-bottom: 12px;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .card-title {
+            font-size: 1em;
+            font-weight: 600;
+            color: #2d2d2d;
+        }
+
+        .card-badge {
+            display: inline-block;
+            background: #e8e8e8;
+            color: #555;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.8em;
+            font-weight: 500;
+        }
+
+        .card-content {
+            color: #555;
+            font-size: 0.93em;
+        }
+
+        .card-content p {
+            margin-bottom: 8px;
+        }
+
+        .card-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card-content li {
+            padding: 4px 0;
+            padding-left: 18px;
+            position: relative;
+        }
+
+        .card-content li:before {
+            content: "▪";
+            position: absolute;
+            left: 0;
+            color: #999;
+            font-size: 0.8em;
+        }
+
+        .card-content strong {
+            color: #2d2d2d;
+        }
+
+        .small-text {
+            color: #999;
+            font-size: 0.85em;
+            margin-top: 3px;
+        }
+
+        /* 두 열 */
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .two-columns {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 테이블 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 0.92em;
+        }
+
+        table th {
+            background: #f5f5f5;
+            padding: 10px;
+            text-align: left;
+            font-weight: 600;
+            color: #2d2d2d;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        table td {
+            padding: 10px;
+            border-bottom: 1px solid #f0f0f0;
+            color: #555;
+        }
+
+        table tr:last-child td {
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        /* 칩 */
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 10px 0;
+        }
+
+        .chip {
+            background: #e8e8e8;
+            color: #555;
+            padding: 4px 10px;
+            border-radius: 16px;
+            font-size: 0.85em;
+            display: inline-block;
+        }
+
+        /* 하이라이트 */
+        .highlight-box {
+            background: #f5f5f5;
+            border-left: 3px solid #2d2d2d;
+            padding: 12px 14px;
+            margin: 12px 0;
+            border-radius: 3px;
+            font-size: 0.93em;
+        }
+
+        .highlight-box p {
+            margin: 4px 0;
+        }
+
+        /* 체크리스트 */
+        .checklist {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 12px 0;
+        }
+
+        @media (max-width: 768px) {
+            .checklist {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px;
+            background: #fafafa;
+            border-radius: 3px;
+            font-size: 0.92em;
+            color: #555;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+
+        /* 라벨 */
+        .label-green { color: #27ae60; font-weight: 600; }
+        .label-red { color: #e74c3c; font-weight: 600; }
+
+        /* 하단 */
+        .footer {
+            background: #f9f9f9;
+            padding: 20px 40px;
+            border-top: 1px solid #e5e5e5;
+            color: #999;
+            font-size: 0.85em;
+            text-align: center;
+        }
+
+        /* 인쇄 */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+        }
+
+        /* 반응형 */
+        @media (max-width: 640px) {
+            .header {
+                padding: 25px 20px;
+            }
+            .header h1 {
+                font-size: 1.4em;
+            }
+            .content {
+                padding: 20px;
+            }
+            .card {
+                padding: 12px 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 헤더 -->
+        <div class="header">
+            <h1>🍖 압구정곱창</h1>
+            <p>운영 매뉴얼 | 직원 7명 | 2026년</p>
+        </div>
+
+        <div class="content">
+
+            <!-- 조직도 -->
+            <div class="section">
+                <div class="section-title">직원 조직도</div>
+
+                <div class="two-columns">
+                    <div class="card">
+                        <div class="card-title" style="margin-bottom: 10px;">주방팀 (3명)</div>
+                        <div class="card-content">
+                            <p><strong>봉녀</strong> <span class="small-text">고기 그릴</span></p>
+                            <p><strong>옥화</strong> <span class="small-text">야채/전골</span></p>
+                            <p><strong>순덕</strong> <span class="small-text">야채 보조</span></p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-title" style="margin-bottom: 10px;">홀팀 (3명) + 보조 (1명)</div>
+                        <div class="card-content">
+                            <p><strong>은영</strong> <span class="small-text">매니저/포스</span></p>
+                            <p><strong>경희</strong> <span class="small-text">한국 손님</span></p>
+                            <p><strong>성옥</strong> <span class="small-text">중국 손님/마감</span></p>
+                            <p><strong>주연</strong> <span class="small-text">소스/정리</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 직원 업무 -->
+            <div class="section">
+                <div class="section-title">주요 업무</div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">봉녀 · 고기 그릴</span>
+                        <span class="card-badge">주방</span>
+                    </div>
+                    <table>
+                        <tr>
+                            <td style="width: 20%;"><strong>아침</strong></td>
+                            <td>고기 정리, 일일량 계산 (평일 4~5봉, 주말 6~7봉)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>영업중</strong></td>
+                            <td>실시간 고기 굽기 (약 1분 30초)</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">옥화 · 야채/전골</span>
+                        <span class="card-badge">주방</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>육수 불 올리기</strong> (오픈시 가장 먼저)</p>
+                        <p><strong>부추:</strong> 평일 15~20단, 금요일 30단</p>
+                        <p><strong>전골:</strong> 소(곱창 140g+양 30g) / 중(곱창 220g+양 40g)</p>
+                        <p><strong>계란찜:</strong> 계란물 1.5국자 + 육수 1국자</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">순덕 · 야채 보조</span>
+                    </div>
+                    <div class="chips">
+                        <span class="chip">야채 정리</span>
+                        <span class="chip">세척</span>
+                        <span class="chip">슬라이싱</span>
+                        <span class="chip">재료 채우기</span>
+                        <span class="chip">점심 준비</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">주연 · 소스/정리</span>
+                        <span class="card-badge">홀</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>소스 제조</strong> (한 판당 10개씩, 총 60개+)</p>
+                        <ul style="margin-top: 6px;">
+                            <li><strong>간장청양마늘:</strong> 간장 절반 + 마늘 1티스푼 + 청양고추 반스푼</li>
+                            <li><strong>소금장:</strong> 참기름 1스푼 + 구운후추소금 1티스푼</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">은영 · 매니저</span>
+                        <span class="card-badge">관리</span>
+                    </div>
+                    <div class="highlight-box" style="margin: 10px 0;">
+                        <strong>고객 데이터 기록</strong><br>
+                        날짜 | 국가 | 인원 | 경로 | 자리번호
+                    </div>
+                </div>
+
+                <div class="two-columns">
+                    <div class="card">
+                        <div class="card-title" style="margin-bottom: 8px;">경희 · 홀 서빙</div>
+                        <ul class="card-content">
+                            <li>자리 안내 & 물</li>
+                            <li>소스 설명</li>
+                            <li>주류/볶음밥</li>
+                            <li>정리</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-title" style="margin-bottom: 8px;">성옥 · 홀+마감</div>
+                        <ul class="card-content">
+                            <li>중국 손님 응대</li>
+                            <li>소스 설명</li>
+                            <li>홀 서빙</li>
+                            <li>최종 마감</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 레시피 -->
+            <div class="section">
+                <div class="section-title">핵심 레시피</div>
+
+                <div class="card">
+                    <div class="card-title" style="margin-bottom: 10px;">🔥 구이 (1인분)</div>
+                    <table>
+                        <tr>
+                            <th>부위</th>
+                            <th style="width: 20%;">수량</th>
+                            <th>준비</th>
+                        </tr>
+                        <tr>
+                            <td><strong>곱창</strong></td>
+                            <td>160g</td>
+                            <td>5cm 간격, 숙성고</td>
+                        </tr>
+                        <tr>
+                            <td><strong>대창</strong></td>
+                            <td>230g</td>
+                            <td>5cm 간격, 타올</td>
+                        </tr>
+                        <tr>
+                            <td><strong>막창</strong></td>
+                            <td>150g</td>
+                            <td>편으로 자르기</td>
+                        </tr>
+                        <tr>
+                            <td><strong>양</strong></td>
+                            <td>150g</td>
+                            <td>수분 제거</td>
+                        </tr>
+                    </table>
+                    <p class="small-text" style="margin-top: 8px;"><strong>가니쉬:</strong> 부추무침 100~120g · 양파 50g · 대파 50g · 호박 30g · 감자 2조각 · 새송이 30g · 떡 4개</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-title" style="margin-bottom: 10px;">🍲 전골</div>
+                    <table>
+                        <tr>
+                            <th style="width: 25%;">사이즈</th>
+                            <th>곱창</th>
+                            <th>양</th>
+                        </tr>
+                        <tr>
+                            <td><strong>소</strong></td>
+                            <td>140g</td>
+                            <td>30g</td>
+                        </tr>
+                        <tr>
+                            <td><strong>중</strong></td>
+                            <td>220g</td>
+                            <td>40g</td>
+                        </tr>
+                    </table>
+                    <p class="small-text" style="margin-top: 8px;"><strong>마무리:</strong> 깻잎 → 팽이 → 부추 → 들깨 1스푼</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-title" style="margin-bottom: 10px;">🥚 계란찜</div>
+                    <p><strong>1호 뚝배기:</strong> 계란물 1.5국자 + 육수 1국자</p>
+                </div>
+            </div>
+
+            <!-- 준비량 -->
+            <div class="section">
+                <div class="section-title">일일 준비량</div>
+
+                <div class="card">
+                    <table>
+                        <tr>
+                            <th style="width: 20%;">요일</th>
+                            <th>곱창</th>
+                            <th>대창</th>
+                            <th>막창</th>
+                        </tr>
+                        <tr>
+                            <td><strong>평일</strong></td>
+                            <td>8-10kg</td>
+                            <td>4-5kg</td>
+                            <td>2-3kg</td>
+                        </tr>
+                        <tr>
+                            <td><strong>주말</strong></td>
+                            <td>12-14kg</td>
+                            <td>6-8kg</td>
+                            <td>4-5kg</td>
+                        </tr>
+                    </table>
+                    <p style="margin-top: 10px; font-size: 0.93em;"><strong>부추:</strong> 평일 15~20단 / 금요일 30단</p>
+                </div>
+            </div>
+
+            <!-- 체크리스트 -->
+            <div class="section">
+                <div class="section-title">일일 체크리스트</div>
+
+                <div class="card">
+                    <div class="card-title label-green" style="margin-bottom: 10px;">오픈 준비</div>
+                    <div class="checklist">
+                        <div class="checkbox-item"><input type="checkbox"><span>위생 확인</span></div>
+                        <div class="checkbox-item"><input type="checkbox"><span>예약 확인</span></div>
+                        <div class="checkbox-item"><input type="checkbox"><span>테이블 정리</span></div>
+                        <div class="checkbox-item"><input type="checkbox"><span>고기 해동</span></div>
+                        <div class="checkbox-item"><input type="checkbox"><span>반찬 세팅</span></div>
+                        <div class="checkbox-item"><input type="checkbox"><span>POS 확인</span></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title label-red" style="margin-bottom: 10px;">마감 정리</div>
+                    <div class="checklist">
+                        <div class="checkbox-item"><input type="checkbox"><span>테이블 정리</span></div>
+                        <div class="checkbox-item"><input type="checkbox"><span>바닥 청소</span></div>
+                        <div class="checkbox-item"><input type="checkbox"><span>불판 세척</span></div>
+                        <div class="checkbox-item"><input type="checkbox"><span>기름 정리</span></div>
+                        <div class="checkbox-item"><input type="checkbox"><span>재고 확인</span></div>
+                        <div class="checkbox-item"><input type="checkbox"><span>발주 계산</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 핵심 원칙 -->
+            <div class="section">
+                <div class="section-title">💡 핵심 원칙</div>
+
+                <div class="card">
+                    <div class="highlight-box">
+                        <p><strong>✓ 모든 수치는 기록</strong></p>
+                        <p class="small-text">고기량 · 야채량 · 소스량 · 고객 데이터</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="highlight-box">
+                        <p><strong>✓ 신선도 관리</strong></p>
+                        <p class="small-text">야채 매일 확인 · 명이나물 2일 이상 금지</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="highlight-box">
+                        <p><strong>✓ 위생 우선</strong></p>
+                        <p class="small-text">손 씻기 (시간당 1회) · 도구 소독 · 온도 기록</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="highlight-box">
+                        <p><strong>✓ 고객 만족</strong></p>
+                        <p class="small-text">소스 설명 정확성 · 친절한 응대 · 신속한 서빙</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 하단 -->
+        <div class="footer">
+            <p>압구정곱창 운영 매뉴얼 | 인쇄 후 각 구역에 부착</p>
+        </div>
+    </div>
+</body>
+</html>

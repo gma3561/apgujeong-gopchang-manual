@@ -1,0 +1,6 @@
+.DS_Store
+_raw/
+매뉴얼정리.docx
+*.docx
+node_modules/
+.env

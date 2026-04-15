@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>압구정곱창 운영 매뉴얼</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
+            background: #f5f5f5;
+            padding: 30px 15px;
+            line-height: 1.6;
+            color: #333;
+        }
+        .container {
+            max-width: 920px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        .header {
+            background: #fff;
+            padding: 40px;
+            border-bottom: 1px solid #e5e5e5;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2em;
+            color: #2d2d2d;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        .header p {
+            color: #999;
+            font-size: 0.95em;
+        }
+        .content {
+            padding: 40px;
+        }
+
+        /* 포지션 섹션 */
+        .position-section {
+            margin-bottom: 45px;
+        }
+        .position-title {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #2d2d2d;
+            margin-bottom: 5px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #e5e5e5;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .position-subtitle {
+            font-size: 0.9em;
+            color: #999;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        /* 카드 */
+        .task-card {
+            background: #f9f9f9;
+            border: 1px solid #e5e5e5;
+            border-radius: 6px;
+            padding: 18px 20px;
+            margin-bottom: 12px;
+        }
+        .task-title {
+            font-weight: 600;
+            color: #2d2d2d;
+            margin-bottom: 12px;
+            font-size: 1.05em;
+        }
+        .task-content {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* 리스트 */
+        .task-list {
+            list-style: none;
+            padding: 0;
+        }
+        .task-list li {
+            padding: 6px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        .task-list li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #ccc;
+        }
+
+        /* 상세 정보 박스 */
+        .info-box {
+            background: #f0f7ff;
+            border-left: 4px solid #2196F3;
+            padding: 12px 16px;
+            margin: 12px 0;
+            border-radius: 3px;
+            font-size: 0.95em;
+            color: #1565c0;
+        }
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 12px 16px;
+            margin: 12px 0;
+            border-radius: 3px;
+            font-size: 0.95em;
+            color: #856404;
+        }
+        .tip-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 12px 16px;
+            margin: 12px 0;
+            border-radius: 3px;
+            font-size: 0.95em;
+            color: #2e7d32;
+        }
+
+        /* 타이밍 */
+        .timing {
+            background: #f5f5f5;
+            padding: 10px 14px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: #666;
+            margin: 8px 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* 팀 구분선 */
+        .team-divider {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #e5e5e5;
+        }
+
+        /* 체크리스트 */
+        .checklist {
+            background: #fafafa;
+            border: 1px solid #e5e5e5;
+            border-radius: 6px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .checklist h4 {
+            margin-bottom: 15px;
+            color: #2d2d2d;
+            font-weight: 600;
+        }
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 3px;
+        }
+        .checklist-item input {
+            margin-right: 12px;
+            margin-top: 3px;
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+        }
+        .checklist-item label {
+            cursor: pointer;
+            font-size: 0.95em;
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>🍖 압구정곱창 운영 매뉴얼</h1>
+        <p>포지션 중심 업무 가이드</p>
+    </div>
+
+    <div class="content">
+        <!-- 오픈 전 준비 -->
+        <div class="position-section">
+            <div class="position-title">⏰ 오픈 전 준비 (전체 직원)</div>
+            <div class="position-subtitle">영업 시작 전 필수 체크사항</div>
+
+            <div class="task-card">
+                <div class="task-title">오픈 전 체크리스트</div>
+                <div class="checklist">
+                    <h4>필수 확인 사항 (✓)</h4>
+                    <div class="checklist-item"><input type="checkbox"><label>1. 유니폼 입기</label></div>
+                    <div class="checklist-item"><input type="checkbox"><label>2. 손 씻기 + 위생 확인</label></div>
+                    <div class="checklist-item"><input type="checkbox"><label>3. 부탄가스 충전 (비닐 제거)</label></div>
+                    <div class="checklist-item"><input type="checkbox"><label>4. 테이블/의자 정렬</label></div>
+                    <div class="checklist-item"><input type="checkbox"><label>5. 냅킨/물티슈 채우기</label></div>
+                    <div class="checklist-item"><input type="checkbox"><label>6. 컵 세트 확인</label></div>
+                    <div class="checklist-item"><input type="checkbox"><label>7. 소스 준비 (60개 이상)</label></div>
+                    <div class="checklist-item"><input type="checkbox"><label>8. 야채 정렬 확인</label></div>
+                    <div class="checklist-item"><input type="checkbox"><label>9. 육수 불 올리기</label></div>
+                    <div class="checklist-item"><input type="checkbox"><label>10. 고기 정렬 완료</label></div>
+                    <div class="checklist-item"><input type="checkbox"><label>11. 포스 전원 ON</label></div>
+                    <div class="checklist-item"><input type="checkbox"><label>12. 에어컨/환풍기 가동</label></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 주방팀 -->
+        <div class="team-divider">
+            <div class="position-title">👨‍🍳 주방팀</div>
+        </div>
+
+        <!-- 고기 담당 -->
+        <div class="position-section">
+            <div class="position-title">🔥 고기 담당</div>
+            <div class="position-subtitle">담당: 봉녀 | 시간: 오전 준비 ~ 마감</div>
+
+            <div class="task-card">
+                <div class="task-title">아침 준비</div>
+                <div class="task-content">
+                    <ul class="task-list">
+                        <li><strong>고기 분량 계산</strong>
+                            <div class="info-box">
+                                평일 (4-5봉): 곱창 8-10kg, 대창 4-5kg, 막창 2-3kg<br>
+                                주말 (6-7봉): 곱창 12-14kg, 대창 6-8kg, 막창 4-5kg
+                            </div>
+                        </li>
+                        <li><strong>고기 정렬</strong>
+                            <ul class="task-list">
+                                <li>곱창 (160g): 5cm 간격 절단 후 편으로 나열 → 숙성고 준비</li>
+                                <li>대창 (230g): 5cm 간격 절단 → 1/2 바트 + 키친타올</li>
+                                <li>막창 (150g): 편으로 슬라이싱 → 1/2 바트 + 키친타올</li>
+                                <li>양 (150g): 진공포장 개봉 → 키친타올로 수분 제거</li>
+                            </ul>
+                        </li>
+                        <li><strong>기름 제거</strong> - 못난이 부분 세정</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="task-card">
+                <div class="task-title">영업 중</div>
+                <div class="task-content">
+                    <strong>🍖 구이 조리 프로세스 (1인분 기준)</strong>
+
+                    <div class="timing">
+                    0초) 주문 받기<br>
+                    5초) 불판 온도 확인 (중불)<br>
+                    10초) 곱창/대창/막창 올리기<br>
+                    30초) 마늘가루 + 다시다 뿌리기<br>
+                    45초) 막창과 양에 후추 뿌리기<br>
+                    60초) 1차 뒤집기 (고기 끝이 말려보임)<br>
+                    90초) 양념 다시 뿌리기 (필요시)<br>
+                    100초) 2차 뒤집기<br>
+                    110초) 가니쉬 올리기 (부추무침/양파/대파/호박/감자/버섯/떡)<br>
+                    120초) 소스 설명 후 고객에게 제공
+                    </div>
+
+                    <ul class="task-list">
+                        <li><strong>불 세기 관리</strong> - 고기가 말리지 않도록 중불 유지</li>
+                        <li><strong>뒤집기 타이밍</strong> - 아래쪽이 갈색으로 변하면 뒤집기</li>
+                        <li><strong>가니쉬 배치</strong> - 마지막에 정렬해서 올리기</li>
+                    </ul>
+
+                    <div class="warning-box">
+                    ⚠️ 피해야 할 것: 너무 빨리 뒤집기, 불을 너무 세우기 (탈 위험), 양념 생략
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 야채/전골 담당 -->
+        <div class="position-section">
+            <div class="position-title">🥬 야채 & 전골 담당</div>
+            <div class="position-subtitle">담당: 옥화 | 시간: 오전 ~ 마감 | 보조: 순덕</div>
+
+            <div class="task-card">
+                <div class="task-title">아침 준비 (가장 중요한 순서)</div>
+                <div class="task-content">
+                    <ol style="padding-left: 25px;">
+                        <li style="margin-bottom: 10px;"><strong>육수 불 올리기</strong> (⚠️ 가장 먼저!)
+                            <div class="info-box">
+                            멸치 + 디포리 + 소금으로 끓인 후 한소끔 식혀두기<br>
+                            전골/계란찜에 사용
+                            </div>
+                        </li>
+                        <li style="margin-bottom: 10px;"><strong>부추 세척</strong> (평일: 15-20단, 금요일: 30단)
+                            <ul class="task-list">
+                                <li>4cm 간격으로 자르기</li>
+                                <li>1차 세척 (물 갈아가며)</li>
+                                <li>2차 세척</li>
+                                <li>3차 세척</li>
+                                <li>타공채반에서 물기 제거</li>
+                                <li>양념에 버무리기 (부추 양념)</li>
+                            </ul>
+                        </li>
+                        <li style="margin-bottom: 10px;"><strong>야채 다듬기</strong>
+                            <ul class="task-list">
+                                <li>양파: 2-3cm 큐브 (구이용) / 잘게 (전골용)</li>
+                                <li>대파: 4cm 길이</li>
+                                <li>감자: 끓는 물에 데치기 (2조각 약 60g)</li>
+                                <li>새송이버섯: 0.5cm 간격 슬라이싱 (30g)</li>
+                                <li>호박: 1cm 간격 절단</li>
+                            </ul>
+                        </li>
+                        <li style="margin-bottom: 10px;"><strong>계란찜 준비</strong>
+                            <ul class="task-list">
+                                <li>계란물: 1.5국자 (계란 깨서 물+맛소금 추가 후 홍두깨 그라인더로 간 것)</li>
+                                <li>육수: 1국자</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="task-card">
+                <div class="task-title">🍲 전골 조리</div>
+                <div class="task-content">
+                    <strong>사이즈별 고기 분량</strong>
+                    <div class="info-box">
+                    소: 곱창 140g + 양 30g<br>
+                    중: 곱창 220g + 양 40g
+                    </div>
+
+                    <strong>추가 재료</strong>
+                    <ul class="task-list">
+                        <li>호박 (1cm 간격)</li>
+                        <li>청양고추</li>
+                        <li>배추</li>
+                        <li>양파</li>
+                        <li>떡국떡</li>
+                        <li>두부</li>
+                        <li>당면</li>
+                        <li>대파</li>
+                    </ul>
+
+                    <strong>조리 순서</strong>
+                    <div class="timing">
+                    1) 육수 끓이기<br>
+                    2) 곱창 + 양 넣기<br>
+                    3) 고기 익으면 야채 넣기<br>
+                    4) 한소끔 더 끓이기<br>
+                    5) 깻잎 올리기<br>
+                    6) 팽이버섯 올리기<br>
+                    7) 부추 올리기 (마지막)<br>
+                    8) 들깨가루 1스푼 (마지막)
+                    </div>
+                </div>
+            </div>
+
+            <div class="task-card">
+                <div class="task-title">🥚 계란찜 조리</div>
+                <div class="task-content">
+                    <strong>포션: 1인분 (1호 뚝배기)</strong>
+
+                    <div class="timing">
+                    0초) 뚝배기에 계란물 1.5국자 + 육수 1국자 혼합<br>
+                    5초) 강불에서 올리기 (뜨거워질 때까지)<br>
+                    30초) 뚝배기 옆부분이 익으면 약불로 줄이고 뚜껑 덮기<br>
+                    60초) 속까지 익는 동안 관찰<br>
+                    90초) 연기 나면 불 끄기<br>
+                    100초) 삼바리에 받쳐 고객 제공
+                    </div>
+
+                    <div class="warning-box">
+                    ⚠️ 온도 조절이 핵심! 너무 세면 기포가 생기고, 약하면 안 익음
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 홀팀 -->
+        <div class="team-divider">
+            <div class="position-title">🏠 홀팀</div>
+        </div>
+
+        <!-- 소스/정리 담당 -->
+        <div class="position-section">
+            <div class="position-title">🧂 소스 & 정리 담당</div>
+            <div class="position-subtitle">담당: 주연 | 시간: 오전 ~ 마감</div>
+
+            <div class="task-card">
+                <div class="task-title">아침 준비</div>
+                <div class="task-content">
+                    <ul class="task-list">
+                        <li><strong>바닥 정리</strong> (⚠️ 가장 먼저!)</li>
+                        <li><strong>테이블별 컵 세팅</strong></li>
+                        <li><strong>반찬 통 채우기</strong>
+                            <ul class="task-list">
+                                <li>깍두기</li>
+                                <li>당근</li>
+                                <li>오이고추</li>
+                            </ul>
+                        </li>
+                        <li><strong>날치알 준비</strong> - 해동 + 물기 짜기 (과하지 않게)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="task-card">
+                <div class="task-title">🍯 소스 제조 (영업 중)</div>
+                <div class="task-content">
+                    <strong>간장청양마늘소스</strong>
+                    <div class="info-box">
+                    한 판 기준 10개씩 제조<br>
+                    평일: 60개 / 주말: 80개 이상 준비<br>
+                    <br>
+                    구성: 소스종지에<br>
+                    - 간장 (절반)<br>
+                    - 마늘 (1티스푼)<br>
+                    - 청양고추 (반스푼)
+                    </div>
+
+                    <strong>소금장</strong>
+                    <div class="info-box">
+                    종지에: 참기름 1스푼 + 구운후추소금 1티스푼
+                    </div>
+
+                    <strong>대창소스</strong>
+                    <div class="info-box">
+                    종지 1스푼 (대창 담금용)
+                    </div>
+
+                    <div class="warning-box">
+                    ⚠️ 위생: 손목 위로 준비! 음식과 직접 닿지 않도록
+                    </div>
+                </div>
+            </div>
+
+            <div class="task-card">
+                <div class="task-title">영업 중 지속적인 일</div>
+                <div class="task-content">
+                    <ul class="task-list">
+                        <li><strong>손님상 올리기</strong> - 소스 함께 제공</li>
+                        <li><strong>부족 반찬 조기 발견</strong> - 깍두기, 당근, 오이고추</li>
+                        <li><strong>간마늘/간깍두기 제조</strong> (없으면)</li>
+                        <li><strong>포스 보조</strong> (필요시)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 고객 응대 -->
+        <div class="position-section">
+            <div class="position-title">👋 고객 응대 & 서빙</div>
+            <div class="position-subtitle">담당: 경희(한국), 성옥(중국) | 시간: 영업 중</div>
+
+            <div class="task-card">
+                <div class="task-title">아침 준비</div>
+                <div class="task-content">
+                    <ul class="task-list">
+                        <li><strong>부탄가스 비닐 벗기기</strong> (오픈 전)</li>
+                        <li><strong>냅킨/물티슈 충전</strong></li>
+                        <li><strong>손님 맞이 준비</strong></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="task-card">
+                <div class="task-title">영업 중 (고객 응대)</div>
+                <div class="task-content">
+                    <strong>손님 도착 ~ 퇴실</strong>
+                    <div class="timing">
+                    1) 손님 자리 안내<br>
+                    2) 물 제공<br>
+                    3) 고기별 소스 설명 (큰창은 소금장, 곱창은 간장소스)<br>
+                    4) 주류/볶음밥 주문 수령<br>
+                    5) 주문 포스로 전달<br>
+                    6) 손님 퇴실 시 상 정리 (신속하게)<br>
+                    7) 다음 손님 테이블 준비
+                    </div>
+
+                    <div class="tip-box">
+                    💡 한국 손님 담당(경희): 친근하고 빠른 응대<br>
+                    💡 중국 손님 담당(성옥): 영어/중국어 소스 설명 + 세심한 배려
+                    </div>
+                </div>
+            </div>
+
+            <div class="task-card">
+                <div class="task-title">마감 시간</div>
+                <div class="task-content">
+                    <ul class="task-list">
+                        <li><strong>경희</strong>: 맥주 채우기</li>
+                        <li><strong>성옥</strong>: 소주 채우기 + 전체 마감</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 매니저 -->
+        <div class="position-section">
+            <div class="position-title">👔 매니저</div>
+            <div class="position-subtitle">담당: 은영 | 시간: 오후 ~ 마감</div>
+
+            <div class="task-card">
+                <div class="task-title">오후 오픈 전</div>
+                <div class="task-content">
+                    <ul class="task-list">
+                        <li><strong>일일 현황 정리</strong> - 어제 매출 정보 입력</li>
+                        <li><strong>직원 출퇴근 체크</strong></li>
+                        <li><strong>당일 체험단/예약 확인</strong></li>
+                        <li><strong>예약 손님 자리 사전 세팅</strong></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="task-card">
+                <div class="task-title">📊 고객 데이터 기록 (영업 중)</div>
+                <div class="task-content">
+                    <strong>기록 항목</strong>
+                    <div class="info-box">
+                    날짜 | 시간 | 국가 | 인원 | 방문경로 | 자리번호
+                    </div>
+
+                    <strong>기록 예시</strong>
+                    <div class="timing">
+                    2026-04-15 | 18:30 | 한국 | 3 | 재방문 | #2<br>
+                    2026-04-15 | 19:00 | 중국 | 4 | 해외여행객 | #5<br>
+                    2026-04-15 | 20:15 | 한국 | 2 | 신규 | #3
+                    </div>
+
+                    <div class="warning-box">
+                    ⚠️ 중요: 모든 방문 고객 데이터를 기록! (마케팅/통계용)
+                    </div>
+                </div>
+            </div>
+
+            <div class="task-card">
+                <div class="task-title">영업 중 (매니저 역할)</div>
+                <div class="task-content">
+                    <ul class="task-list">
+                        <li><strong>매장 순찰</strong> - 소스 부족, 온도, 청결도 확인</li>
+                        <li><strong>의자 수납공간 안내</strong> (필요시)</li>
+                        <li><strong>손님상 고기 잘라드리기</strong></li>
+                        <li><strong>볶음밥 주문</strong> (순서대로 준비)</li>
+                        <li><strong>메인 포스 계산</strong></li>
+                        <li><strong>홀 서빙</strong> (필요시)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="task-card">
+                <div class="task-title">마감</div>
+                <div class="task-content">
+                    <ul class="task-list">
+                        <li><strong>마감 안내</strong> - 라스트 오더 시간 알리기</li>
+                        <li><strong>수저 세트 닦기</strong></li>
+                        <li><strong>일일 매출 정산</strong></li>
+                        <li><strong>예약 및 이상사항 기록</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 마감 -->
+        <div class="position-section">
+            <div class="position-title">🌙 마감 (전체 직원)</div>
+            <div class="checklist">
+                <h4>마감 체크리스트</h4>
+                <div class="checklist-item"><input type="checkbox"><label>1. 마지막 손님 배웅</label></div>
+                <div class="checklist-item"><input type="checkbox"><label>2. 테이블 정렬</label></div>
+                <div class="checklist-item"><input type="checkbox"><label>3. 의자 수납</label></div>
+                <div class="checklist-item"><input type="checkbox"><label>4. 부탄가스 점검</label></div>
+                <div class="checklist-item"><input type="checkbox"><label>5. 냅킨/물티슈 정리</label></div>
+                <div class="checklist-item"><input type="checkbox"><label>6. 반찬 통 정리</label></div>
+                <div class="checklist-item"><input type="checkbox"><label>7. 주방 정리 (봉녀)</label></div>
+                <div class="checklist-item"><input type="checkbox"><label>8. 육수/야채 정리 (옥화)</label></div>
+                <div class="checklist-item"><input type="checkbox"><label>9. 소스/기구 정리 (주연)</label></div>
+                <div class="checklist-item"><input type="checkbox"><label>10. 바닥 청소</label></div>
+                <div class="checklist-item"><input type="checkbox"><label>11. 화장실 확인</label></div>
+                <div class="checklist-item"><input type="checkbox"><label>12. 쓰레기 처리</label></div>
+                <div class="checklist-item"><input type="checkbox"><label>13. 포스 정산 및 정리</label></div>
+                <div class="checklist-item"><input type="checkbox"><label>14. 에어컨/환풍기 종료</label></div>
+                <div class="checklist-item"><input type="checkbox"><label>15. 불 끄기</label></div>
+                <div class="checklist-item"><input type="checkbox"><label>16. 문 잠금</label></div>
+                <div class="checklist-item"><input type="checkbox"><label>17. 내일 발주 확인</label></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

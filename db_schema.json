@@ -1,0 +1,55 @@
+{
+  "version": "1.0",
+  "timestamp": "2026-04-15",
+  "database_structure": {
+    "categories": {
+      "table_name": "메뉴_카테고리",
+      "fields": {
+        "category_id": "카테고리 고유ID (PK)",
+        "category_name": "카테고리명 (곱창류, 소곱창류 등)",
+        "display_order": "표시 순서 (1, 2, 3...)",
+        "description": "카테고리 설명"
+      }
+    },
+    "menu_items": {
+      "table_name": "메뉴_항목",
+      "fields": {
+        "item_id": "메뉴 고유ID (PK)",
+        "item_name": "메뉴명",
+        "category_id": "카테고리 외래키 (FK)",
+        "base_price": "기본 가격",
+        "description": "메뉴 설명",
+        "notes": "특이사항 (매운맛 표시 등)",
+        "availability": "판매여부 (available, unavailable)",
+        "display_order": "카테고리 내 표시 순서"
+      }
+    },
+    "menu_options": {
+      "table_name": "메뉴_옵션",
+      "fields": {
+        "option_id": "옵션 고유ID (PK)",
+        "item_id": "메뉴 외래키 (FK)",
+        "option_type": "옵션 종류 (부위, 분량, 추가메뉴 등)",
+        "option_name": "옵션명",
+        "additional_price": "추가 가격 (0원이면 생략)",
+        "required": "필수옵션 여부"
+      }
+    },
+    "set_menus": {
+      "table_name": "세트_메뉴",
+      "fields": {
+        "set_id": "세트 고유ID (PK)",
+        "set_name": "세트명",
+        "base_price": "세트 가격",
+        "components": "구성 메뉴 (item_id 배열)",
+        "description": "세트 설명"
+      }
+    }
+  },
+  "normalization_rules": {
+    "price": "숫자만 저장 (콤마, 원 제거)",
+    "category": "표준 카테고리 명 사용 (오타 통일)",
+    "encoding": "UTF-8",
+    "date_format": "YYYY-MM-DD"
+  }
+}
