@@ -359,11 +359,11 @@
             background: #fffaf0;
         }
         .photo-placeholder {
-            min-height: 150px;
+            min-height: 220px;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 18px;
+            padding: 28px;
             background:
                 linear-gradient(45deg, rgba(155,154,151,0.06) 25%, transparent 25%),
                 linear-gradient(-45deg, rgba(155,154,151,0.06) 25%, transparent 25%),
@@ -372,7 +372,7 @@
             background-size: 18px 18px;
             background-position: 0 0, 0 9px, 9px -9px, -9px 0;
             color: #787774;
-            font-size: 0.88em;
+            font-size: 0.96em;
             text-align: center;
             line-height: 1.6;
             font-weight: 600;
@@ -380,7 +380,7 @@
         .photo-slot img {
             display: block;
             width: 100%;
-            height: 180px;
+            height: 240px;
             object-fit: cover;
             background: #f7f6f3;
         }
@@ -392,11 +392,11 @@
             margin-bottom: 2px;
         }
         .step-photo-slot {
-            margin-top: 12px;
+            margin-top: 16px;
         }
         .step-photo-slot .photo-placeholder {
-            min-height: 118px;
-            font-size: 0.84em;
+            min-height: 190px;
+            font-size: 0.94em;
         }
         .step-photo-slot .photo-caption {
             font-size: 0.82em;
@@ -462,7 +462,9 @@
             .timeline-text { font-size: 0.88em; }
             .list li, .ordered-list li { font-size: 0.9em; }
             .photo-grid { grid-template-columns: 1fr; }
-            .photo-slot img { height: 150px; }
+            .photo-placeholder { min-height: 180px; }
+            .step-photo-slot .photo-placeholder { min-height: 170px; }
+            .photo-slot img { height: 200px; }
         }
     </style>
 </head>
