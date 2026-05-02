@@ -409,6 +409,7 @@
         <button class="tab-btn" onclick="showTab(event, 'manager')">매니저</button>
         <button class="tab-btn" onclick="showTab(event, 'close')">마감</button>
         <button class="tab-btn" onclick="showTab(event, 'mealkit')">밀키트</button>
+        <button class="tab-btn" onclick="showTab(event, 'quality')">품질 기준</button>
     </div>
 
     <!-- 오픈 준비 -->
@@ -1470,6 +1471,134 @@
                         <tr style="border-bottom:1px solid #f1f1ef;"><td style="padding:7px 6px;">프리미엄</td><td style="padding:7px 6px; text-align:right; font-weight:600;">29,900원</td></tr>
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- 품질 기준 -->
+    <div id="quality" class="tab-content">
+        <div class="position-header">
+            <div class="name">품질 기준 · 일정함 관리</div>
+            <div class="meta">담당: 점주 · 매니저 · 전 직원 · 청결, 맛, 서비스, 마케팅 기준</div>
+        </div>
+
+        <div class="sub-section">
+            <div class="sub-title">운영 최적화의 핵심 기준</div>
+            <div class="info-box">
+                기존 매뉴얼이 포지션별 역할, 조리 기준, 피크타임 대응을 정리했다면 이 섹션은 매장의 결과 품질을 일정하게 유지하기 위한 기준입니다.
+                매일 같은 기준으로 확인해야 하는 핵심 질문은 네 가지입니다.
+            </div>
+            <div class="task-card">
+                <ul class="list">
+                    <li><strong>매장이 청결한가?</strong> 손님이 만지고, 보고, 냄새 맡는 모든 접점이 불쾌하지 않은 상태</li>
+                    <li><strong>음식 맛이 일정한가?</strong> 원육, 손질, 숙성, 계량, 굽기, 제공 온도가 직원별로 흔들리지 않는 상태</li>
+                    <li><strong>서비스가 일정한가?</strong> 바쁜 시간에도 안내, 응대, 리필, 컴플레인 처리가 같은 수준으로 유지되는 상태</li>
+                    <li><strong>마케팅은 효율적인가?</strong> 광고와 리뷰 관리가 실제 방문, 재방문, 매출로 이어지는지 확인되는 상태</li>
+                </ul>
+            </div>
+            <div class="warning-box">기준은 “열심히 했다”가 아니라 “손님 입장에서 불편함이 없는지”로 판단한다.</div>
+        </div>
+
+        <div class="sub-section">
+            <div class="phase">청결 기준</div>
+            <div class="sub-title">매장이 청결한가?</div>
+            <div class="task-card">
+                <div class="task-card-title">일정함의 기준</div>
+                <ul class="list">
+                    <li>테이블을 손으로 만졌을 때 끈적임이 없어야 한다.</li>
+                    <li>바닥을 걸을 때 미끄러짐이나 기름막 느낌이 없어야 한다.</li>
+                    <li>화장실 입구에서 냄새가 올라오지 않아야 한다.</li>
+                    <li>환풍기와 후드에 기름방울, 먼지, 흡입력 저하가 없어야 한다.</li>
+                    <li>불판은 손님 앞에 놓였을 때 탄 자국, 찌꺼기, 기름 뭉침이 없어야 한다.</li>
+                    <li>매장 입구는 유리문 손자국, 외부 쓰레기, 입간판 흐트러짐이 없어야 한다.</li>
+                    <li>천장, 조명, 에어컨 주변에 거미줄과 먼지가 없어야 한다.</li>
+                    <li>앞치마, 유니폼, 모자는 기름 얼룩, 음식물 자국, 냄새가 없어야 한다.</li>
+                </ul>
+            </div>
+
+            <div class="sub-title">청결 세부 체크리스트</div>
+            <div class="checklist-item"><input type="checkbox" id="q-clean-1"><label for="q-clean-1">테이블 중앙, 가장자리, 버너 주변을 손바닥으로 문질러 끈적임 확인</label></div>
+            <div class="checklist-item"><input type="checkbox" id="q-clean-2"><label for="q-clean-2">홀 동선, 주방 입구, 화장실 앞 바닥 미끄러짐 확인</label></div>
+            <div class="checklist-item"><input type="checkbox" id="q-clean-3"><label for="q-clean-3">화장실 입구에서 3초 정지 후 냄새 확인</label></div>
+            <div class="checklist-item"><input type="checkbox" id="q-clean-4"><label for="q-clean-4">화장실 휴지통, 변기 주변, 세면대 배수구, 바닥 물기 확인</label></div>
+            <div class="checklist-item"><input type="checkbox" id="q-clean-5"><label for="q-clean-5">환풍기 필터, 후드, 조리대 상단 기름때 확인</label></div>
+            <div class="checklist-item"><input type="checkbox" id="q-clean-6"><label for="q-clean-6">불판 탄 자국, 찌꺼기, 변형, 기름 뭉침 확인</label></div>
+            <div class="checklist-item"><input type="checkbox" id="q-clean-7"><label for="q-clean-7">입구 유리문 손자국, 대기 공간, 외부 쓰레기 확인</label></div>
+            <div class="checklist-item"><input type="checkbox" id="q-clean-8"><label for="q-clean-8">천장 모서리, 조명, 에어컨 주변 거미줄 확인</label></div>
+            <div class="checklist-item"><input type="checkbox" id="q-clean-9"><label for="q-clean-9">앞치마, 모자, 유니폼 청결 상태 출근 시 확인</label></div>
+            <div class="tip-box">청결 문제는 손님이 말하기 전에 직원이 먼저 발견해야 한다. 말이 나온 뒤에는 이미 늦다.</div>
+        </div>
+
+        <div class="sub-section">
+            <div class="phase">맛 기준</div>
+            <div class="sub-title">음식 맛이 일정한가?</div>
+            <div class="task-card">
+                <table style="width:100%; border-collapse:collapse; font-size:0.92em;">
+                    <thead>
+                        <tr style="border-bottom:2px solid #e9e9e7;">
+                            <th style="padding:8px 6px; text-align:left; color:#787774;">항목</th>
+                            <th style="padding:8px 6px; text-align:left; color:#787774;">기준</th>
+                            <th style="padding:8px 6px; text-align:left; color:#787774;">이탈 시 조치</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom:1px solid #f1f1ef;"><td style="padding:8px 6px;">원육</td><td style="padding:8px 6px;">색, 냄새, 탄력, 수분감이 정상 범위</td><td style="padding:8px 6px;">사용 보류 후 매니저 확인</td></tr>
+                        <tr style="border-bottom:1px solid #f1f1ef;"><td style="padding:8px 6px;">손질</td><td style="padding:8px 6px;">불필요한 지방, 이물, 핏물 제거 상태 균일</td><td style="padding:8px 6px;">재손질 후 담당자 피드백</td></tr>
+                        <tr style="border-bottom:1px solid #f1f1ef;"><td style="padding:8px 6px;">숙성</td><td style="padding:8px 6px;">시작 시간, 종료 시간, 보관 온도 라벨 확인</td><td style="padding:8px 6px;">라벨 누락분 분리, 임의 사용 금지</td></tr>
+                        <tr style="border-bottom:1px solid #f1f1ef;"><td style="padding:8px 6px;">계량</td><td style="padding:8px 6px;">1인분 중량, 소스량, 반찬량 기준 준수</td><td style="padding:8px 6px;">눈대중 금지, 전용 도구 사용</td></tr>
+                        <tr style="border-bottom:1px solid #f1f1ef;"><td style="padding:8px 6px;">굽기</td><td style="padding:8px 6px;">겉면 색, 속 익힘, 제공 온도 일정</td><td style="padding:8px 6px;">첫 판 숙련자 확인, 피크 중 랜덤 체크</td></tr>
+                        <tr><td style="padding:8px 6px;">제공</td><td style="padding:8px 6px;">접시 청결, 사이드 구성, 온도 누락 없음</td><td style="padding:8px 6px;">나가기 전 3초 최종 확인</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="warning-box">바쁘다는 이유로 숙성 시간, 계량, 불판 교체, 소스량, 반찬 구성을 생략하지 않는다.</div>
+        </div>
+
+        <div class="sub-section">
+            <div class="phase">서비스 기준</div>
+            <div class="sub-title">서비스가 일정한가?</div>
+            <div class="task-card">
+                <div class="task-card-title">표준 응대 기준</div>
+                <ul class="list">
+                    <li><strong>입장:</strong> 10초 안에 인사, 인원 확인, 예약 여부 확인</li>
+                    <li><strong>대기:</strong> 앞 대기 팀 수와 예상 시간을 먼저 안내</li>
+                    <li><strong>주문:</strong> 처음 방문 고객에게 대표 메뉴와 굽는 순서 설명</li>
+                    <li><strong>지연:</strong> 손님이 묻기 전에 지연 사유와 예상 시간을 안내</li>
+                    <li><strong>클레임:</strong> 해명보다 사과와 조치를 먼저 진행</li>
+                    <li><strong>퇴장:</strong> 계산 후 마지막 인사와 재방문 유도</li>
+                </ul>
+            </div>
+            <div class="sub-title">피크타임 서비스 유지 기준</div>
+            <div class="checklist-item"><input type="checkbox" id="q-service-1"><label for="q-service-1">피크 30분 전 입구, 주문, 서빙, 리필, 계산, 배달 대응 담당 확정</label></div>
+            <div class="checklist-item"><input type="checkbox" id="q-service-2"><label for="q-service-2">홀 리더가 5분 단위로 전체 테이블 스캔</label></div>
+            <div class="checklist-item"><input type="checkbox" id="q-service-3"><label for="q-service-3">빈 접시, 물, 반찬, 불판 교체 요청이 5분 이상 방치되지 않도록 확인</label></div>
+            <div class="checklist-item"><input type="checkbox" id="q-service-4"><label for="q-service-4">대기 손님에게 예상 시간 중간 안내</label></div>
+            <div class="checklist-item"><input type="checkbox" id="q-service-5"><label for="q-service-5">맛, 청결, 지연, 응대 클레임은 마감 전 원인 공유</label></div>
+        </div>
+
+        <div class="sub-section">
+            <div class="phase">마케팅 기준</div>
+            <div class="sub-title">마케팅은 효율적으로 진행되는가?</div>
+            <div class="task-card">
+                <ul class="list">
+                    <li><strong>지도 정보:</strong> 영업시간, 메뉴, 사진, 공지가 최신 상태인지 주 1회 확인</li>
+                    <li><strong>리뷰:</strong> 좋은 리뷰 요청, 나쁜 리뷰 원인 기록, 반복 키워드 개선</li>
+                    <li><strong>광고비:</strong> 광고비 대비 예약, 전화, 길찾기, 매출 변화를 주간 단위로 확인</li>
+                    <li><strong>이벤트:</strong> 할인보다 재방문, 리뷰, 객단가 상승으로 이어지는지 확인</li>
+                    <li><strong>SNS:</strong> 맛, 청결, 활기, 대표 메뉴가 일관되게 보이는지 확인</li>
+                </ul>
+            </div>
+            <div class="tip-box">마케팅 효율은 광고 세팅만이 아니라 청결, 맛, 서비스 점검 결과와 함께 봐야 한다.</div>
+        </div>
+
+        <div class="sub-section">
+            <div class="phase">점검 루틴</div>
+            <div class="sub-title">하루 3회 품질 점검</div>
+            <div class="timeline">
+                <div class="timeline-row"><div class="timeline-time">오픈 전</div><div class="timeline-text">입구, 테이블, 바닥, 화장실, 유니폼, 불판, 원육 상태 확인</div></div>
+                <div class="timeline-row"><div class="timeline-time">피크 전</div><div class="timeline-text">역할 배치, 반찬·소스·불판·소모품 보충, 환풍기 확인</div></div>
+                <div class="timeline-row"><div class="timeline-time">피크 후</div><div class="timeline-text">테이블 끈적임, 바닥 기름기, 화장실 냄새, 주방 정리 상태 복구</div></div>
+                <div class="timeline-row"><div class="timeline-time">마감 전</div><div class="timeline-text">청결 불합격, 맛 클레임, 서비스 지연, 리뷰 이슈 기록 및 다음날 조치 지정</div></div>
             </div>
         </div>
     </div>
