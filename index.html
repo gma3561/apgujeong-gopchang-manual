@@ -1764,12 +1764,45 @@
 
 <script>
 function showTab(event, tabId) {
-    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-    document.getElementById(tabId).classList.add('active');
-    event.currentTarget.classList.add('active');
+    activateTab(tabId, event.currentTarget);
+    history.replaceState(null, '', '#' + tabId);
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+function activateTab(tabId, button) {
+    const target = document.getElementById(tabId);
+    if (!target) return;
+
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    target.classList.add('active');
+    if (button) button.classList.add('active');
+}
+
+function hydratePhotoSlots() {
+    document.querySelectorAll('.photo-slot').forEach(slot => {
+        const fileName = slot.querySelector('.file-name');
+        const placeholder = slot.querySelector('.photo-placeholder');
+        if (!fileName || !placeholder || slot.querySelector('img')) return;
+
+        const img = new Image();
+        img.src = fileName.textContent.trim();
+        img.alt = fileName.parentElement?.querySelector('strong')?.textContent || '사진 기준';
+        img.onload = () => {
+            placeholder.replaceWith(img);
+        };
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    hydratePhotoSlots();
+
+    const tabId = location.hash.replace('#', '');
+    if (tabId) {
+        const button = document.querySelector(`[onclick*="'${tabId}'"]`);
+        activateTab(tabId, button);
+    }
+});
 </script>
 </body>
 </html>
