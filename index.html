@@ -385,15 +385,21 @@
             background: #f7f6f3;
         }
         .photo-caption {
-            padding: 10px 12px;
-            border-top: 1px solid #e9e9e7;
-            font-size: 0.86em;
-            color: #37352f;
-            line-height: 1.6;
+            display: none;
         }
         .photo-caption strong {
             display: block;
             margin-bottom: 2px;
+        }
+        .step-photo-slot {
+            margin-top: 12px;
+        }
+        .step-photo-slot .photo-placeholder {
+            min-height: 118px;
+            font-size: 0.84em;
+        }
+        .step-photo-slot .photo-caption {
+            font-size: 0.82em;
         }
         .file-name {
             display: inline-block;
@@ -1919,6 +1925,52 @@ function activateTab(tabId, button) {
     if (button) button.classList.add('active');
 }
 
+function removeStandalonePhotoSections() {
+    document.querySelectorAll('.tab-content:not(#quality) .sub-section').forEach(section => {
+        const title = section.querySelector(':scope > .sub-title')?.textContent.trim();
+        if (title?.includes('사진 추가')) section.remove();
+    });
+}
+
+function injectStepPhotoSlots() {
+    document.querySelectorAll('.tab-content').forEach(tab => {
+        let stepIndex = 1;
+        const steps = tab.querySelectorAll('.step');
+
+        steps.forEach(step => {
+            const body = step.querySelector('.step-body');
+            const titleElement = step.querySelector('.step-title')?.cloneNode(true);
+            titleElement?.querySelectorAll('.step-time').forEach(el => el.remove());
+            const title = titleElement?.textContent.trim().replace(/\s+/g, ' ');
+            if (!body || body.querySelector('.step-photo-slot')) return;
+
+            const slot = document.createElement('div');
+            slot.className = 'photo-slot step-photo-slot';
+            slot.innerHTML = `
+                <div class="photo-placeholder">사진 추가 예정<br>${title || '작업 기준 사진'}</div>
+            `;
+
+            body.appendChild(slot);
+            stepIndex += 1;
+        });
+
+        if (steps.length || tab.id === 'quality') return;
+
+        tab.querySelectorAll('.task-card').forEach(card => {
+            const title = card.querySelector('.task-card-title')?.textContent.trim().replace(/\s+/g, ' ');
+            if (card.querySelector('.step-photo-slot')) return;
+
+            const slot = document.createElement('div');
+            slot.className = 'photo-slot step-photo-slot';
+            slot.innerHTML = `
+                <div class="photo-placeholder">사진 추가 예정<br>${title || '작업 기준 사진'}</div>
+            `;
+
+            card.appendChild(slot);
+        });
+    });
+}
+
 function hydratePhotoSlots() {
     document.querySelectorAll('.photo-slot').forEach(slot => {
         const fileName = slot.querySelector('.file-name');
@@ -1935,7 +1987,8 @@ function hydratePhotoSlots() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    hydratePhotoSlots();
+    removeStandalonePhotoSections();
+    injectStepPhotoSlots();
 
     const tabId = location.hash.replace('#', '');
     if (tabId) {
